@@ -1,13 +1,13 @@
 # 🔗 Encurtador de URL
 
-API simples para encurtar links, redirecionar e contar cliques. Feita com Node.js, Express e MongoDB.
+API simples pra encurtar links, redirecionar e contar quantas vezes cada link foi acessado. Feita com Node.js, Express e MongoDB.
 
 ## 🚀 Funcionalidades
 
 - ✅ Encurtar URLs longas
 - ✅ Redirecionar pelo código curto
 - ✅ Contador de cliques por link
-- ✅ Validação de URL
+- ✅ Validar se é URL mesmo
 
 ## 🛠 Tecnologias
 
@@ -43,7 +43,7 @@ URL encurtada com sucesso!
 ```
 
 ### GET /:shortId
-Redireciona para a URL original e conta +1 clique
+Redireciona pra URL original e conta +1 clique
 
 **Exemplo:**
 ```
@@ -64,13 +64,18 @@ encurtador-url/
 
 ## 🧠 Como funciona
 
-1. Usuário envia URL via POST /shorten
-2. API valida e gera código único com shortid
-3. Salva no MongoDB: { originalUrl, shortId, clicks: 0 }
-4. Ao acessar GET /:shortId, a API:
-   - Busca o link no banco
-   - Incrementa clicks +1
-   - Redireciona para URL original
+Pensa num sistema bem simples: você tem um link gigante e quer um menor.
+
+1. O usuário manda o link longo pelo `POST /shorten`
+2. O servidor verifica se é uma URL válida (nada de enviar texto qualquer)
+3. Depois gera um código aleatório com o `shortid`, tipo "abc123"
+4. Salva no MongoDB com esse código e começa o contador de cliques em 0
+5. Quando alguém acessa `http://localhost:3000/abc123`, o servidor:
+   - Procura no banco esse código
+   - Soma +1 nos cliques
+   - Joga o usuário direto pro link original
+
+É tipo um "atalho" que ainda te conta quantas pessoas usaram.
 
 ## 📌 Exemplo
 
@@ -80,16 +85,25 @@ curl -X POST http://localhost:3000/shorten \
   -d '{"url": "https://github.com"}'
 ```
 
-## 🗃️ Model
+## 🗃️ Model do banco
 
 ```javascript
 {
-  originalUrl: String,
-  shortId: String,
-  clicks: Number,
-  createdAt: Date
+  originalUrl: String,  // link original
+  shortId: String,      // código único tipo "abc123"
+  clicks: Number,       // contador de acessos
+  createdAt: Date       // quando foi criado
 }
 ```
+
+## 🚀 Próximos passos (quem sabe um dia)
+
+- [ ] Listar todas as URLs criadas
+- [ ] Deletar links
+- [ ] Estatísticas de cliques (por dia, mês)
+- [ ] Uma página front-end simples pra testar
+- [ ] Subir pro Render ou Railway
+
 ## 📄 Licença
 
 MIT © Geovani Rodrigues
@@ -101,4 +115,6 @@ MIT © Geovani Rodrigues
   <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" />
   <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" />
 </p>
+
+---
 
