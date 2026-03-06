@@ -1,15 +1,15 @@
+require('dotenv').config();
+
 const urlRoutes = require('./routes/urlRoutes');
 const mongoose = require('mongoose');
 const express = require('express');
 
 const app = express();
 
-// Conecta no MongoDB local e avisa no terminal se deu bom ou ruim
-mongoose.connect('mongodb://localhost:27017/encurtador-url').then(() => {
-    console.log('Conectou krlh');
-}).catch((err) => {
-     console.log('Conectou uma poha:', err);
-});
+// Conecta ao MongoDB Atlas
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("Atlas conectou"))
+  .catch(err => console.error("erro ao conectar:", err));
 
 // Middleware para o Express entender JSON que vem no body das reqs
 app.use(express.json());
