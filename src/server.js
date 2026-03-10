@@ -14,13 +14,14 @@ mongoose.connect(process.env.MONGO_URI)
 // Middleware para o Express entender JSON que vem no body das reqs
 app.use(express.json());
 
-// Injeta as rotas de encurtamento q criei no app
-app.use(urlRoutes);
-
 // Rota padrao so pra testar se o servidor ta on
 app.get ('/', (req, res ) => {
     res.send('Servidor está funcionando')
 });
+
+
+// Injeta as rotas de encurtamento q criei no app
+app.use(urlRoutes);
 
 // Define a porta do ambiente (Heroku/Render) ou a 3000 pra dev local
 port = process.env.PORT || 3000;
