@@ -10,8 +10,13 @@ const validUrl = require('valid-url');
 
 router.post('/shorten', async (req, res) => {
     //Pega o link que veio no body da req
-    const {url, customUrl} = req.body;
+    let {url, customUrl} = req.body;
     
+    // Remove espaços em branco caso o usuário tenha colado algo com espaço
+    if (customUrl) {
+        customUrl = customUrl.replace(/\s+/g, ''); 
+    }
+
     try {
         // Valida se o que chegou for realmente um link
         if (!validUrl.isUri(url)) {
