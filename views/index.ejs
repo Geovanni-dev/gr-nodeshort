@@ -40,25 +40,25 @@
         <% } %>
     </div>
 
-    <script>  // Função para copiar o link encurtado para a área de transferência
-        function aoCopiar() {
-        
+    <script>  
+        function aoCopiar() { // Função para copiar o link encurtado para a área de transferência
+        // Pega o endereço do link encurtado e o botão de copiar
             const endereco = document.getElementById('url').href;
             const botao = document.getElementById('btnCopiar');
-
+        // Usa a API de Clipboard para copiar o texto
             navigator.clipboard.writeText(endereco).then(() => {
                 const textoOriginal = botao.innerText;
                 
-            
+            // Feedback visual para o usuário
                 botao.innerText = "Copiado!";
                 botao.style.background = "#28a745"; 
                 
-        
+          // Restaura o texto original do botão após 2 segundos
                 setTimeout(() => {
                     botao.innerText = textoOriginal;
                     botao.style.background = ""; 
                 }, 2000);
-            }).catch(err => {
+            }).catch(err => { // Em caso de erro, loga no console
                 console.error("Erro ao copiar: ", err);
             });
         }

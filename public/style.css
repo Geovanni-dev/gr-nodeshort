@@ -1,13 +1,15 @@
-* {
+* {   /* Reset básico para remover margens e padding */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Garante que a página ocupe toda a altura da tela */
 html, body {
     height: 100%;
 }
 
+/* Estilo para o corpo da página */
 body {
     background: linear-gradient(135deg, #000000 0%, #0a1128 50%, #2d0a4e 100%);
     background-attachment: fixed;
@@ -17,7 +19,7 @@ body {
     font-family: 'Segoe UI', sans-serif;
 }
 
-
+/* Estilo para o container principal */
 .container {
     background: linear-gradient(145deg, rgba(20, 20, 20, 0.9), rgba(40, 20, 80, 0.8));
     width: 90%;
@@ -31,6 +33,7 @@ body {
     overflow: hidden; 
 }
 
+/* Estilo para o título principal */
 h1 {
     font-size: 3rem;
     margin-bottom: 10px;
@@ -40,11 +43,13 @@ h1 {
     font-weight: bold;
 }
 
+/* Estilo para o parágrafo explicativo */
 p {
     color: rgba(255, 255, 255, 0.6);
     margin-bottom: 30px;
 }
 
+/* Estilo para o campo de URL */
 input[type="url"] {
     width: calc(100% - 40px); 
     max-width: 500px;
@@ -56,18 +61,18 @@ input[type="url"] {
     font-size: 1rem;
     outline: none;
 }
-
+/* Estilo para o campo de URL personalizada */
 input[name="customUrl"] {
     width: calc(100% - 40px);
     max-width: 500px;
     padding: 15px 25px;
-    border: 2px solid rgba(144, 5, 236, 0.5); /* Um pouco mais opaco para diferenciar */
+    border: 2px solid rgba(144, 5, 236, 0.5); 
     border-radius: 30px;
-    margin: 10px auto 30px auto; /* Menos margem no topo para ficar perto do outro */
+    margin: 10px auto 30px auto; 
     display: inline-block;
     font-size: 1rem;
     outline: none;
-    background: rgba(255, 255, 255, 0.05); /* Leve fundo para destacar no escuro */
+    background: rgba(255, 255, 255, 0.05); 
     color: white;
 }
 
@@ -78,7 +83,7 @@ input[name="customUrl"]:focus {
 }
 
 
-
+/* Estilo para o botão de encurtar */
 button {
     background: linear-gradient(45deg, #6a11cb 0%, #2575fc 100%);
     color: white;
@@ -90,12 +95,12 @@ button {
     font-weight: bold;
     transition: transform 0.2s;
 }
-
+/* Efeito de hover para o botão */
 button:hover {
     transform: scale(1.05);
 }
 
-.success-link {
+.success-link { /* Estilo para o link encurtado exibido após o sucesso */
     display: block;
     margin-top: 25px;
     font-size: 1.8rem;
@@ -106,23 +111,29 @@ button:hover {
     word-break: break-all; 
 }
 
+
+/* Estilos responsivos para mobile */
 @media (max-width: 768px) {
-    .container {
+    .container { /* Ajusta o container para telas menores */
         width: 95%; 
         padding: 30px 15px;
         border-radius: 30px; 
     }
 
+    /* Ajusta o título para telas menores */
     input[type="url"] {
         width: 100%;
         margin-top: 20px;
         margin-bottom: 20px;
     }
+
+    /* Ajusta o campo de URL personalizada para telas menores */
     input[name="customUrl"] {
         width: 100%;
         margin-bottom: 20px;
     }
 
+    /* Ajusta o botão para telas menores */
     .success-link {
         font-size: 1rem; 
         word-wrap: break-word;
