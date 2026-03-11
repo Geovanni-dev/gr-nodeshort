@@ -10,20 +10,47 @@
     <div class="container">
         <h1>Encurtador de URL</h1>
 
-        
         <form action="/shorten" method="POST">
             <input type="url" name="url" placeholder="Cole seu link aqui" required>
             <br>
             <button type="submit">Encurtar</button>
         </form>
 
-        <% if (typeof linkCurto !== 'undefined' && linkCurto) { %>
-            <div class="success-msg">
-                <a href="<%= linkCurto %>" target="_blank" class="success-link">
-                    <%= linkCurto.replace('https://', '') %>
+        <% if (typeof linkGerado !== 'undefined' && linkGerado) { %>
+            <div class="bloco-resultado">
+                <a href="<%= linkGerado %>" target="_blank" class="success-link" id="url">
+                    <%= linkGerado.replace('https://', '') %>
                 </a>
+                <br>
+                <button type="button" onclick="aoCopiar()" id="btnCopiar" style="margin-top: 15px; padding: 10px 30px; font-size: 1rem;">
+                    Copiar Link
+                </button>
             </div>
         <% } %>
     </div>
+
+    <script>
+        function aoCopiar() {
+        
+            const endereco = document.getElementById('url').href;
+            const botao = document.getElementById('btnCopiar');
+
+            navigator.clipboard.writeText(endereco).then(() => {
+                const textoOriginal = botao.innerText;
+                
+            
+                botao.innerText = "Copiado!";
+                botao.style.background = "#28a745"; 
+                
+        
+                setTimeout(() => {
+                    botao.innerText = textoOriginal;
+                    botao.style.background = ""; 
+                }, 2000);
+            }).catch(err => {
+                console.error("Erro ao copiar: ", err);
+            });
+        }
+    </script>
 </body>
 </html>

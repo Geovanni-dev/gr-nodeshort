@@ -16,7 +16,7 @@ router.post('/shorten', async (req, res) => {
         if (!validUrl.isUri(url)) {
             res.render('index',
                 {
-                    linkCurto: null,
+                    linkGerado: null,
                     error: 'URL inválida!'
                 }); // aqui a gente renderiza a view e passa o erro pra ela mostrar pro user
 
@@ -30,7 +30,7 @@ router.post('/shorten', async (req, res) => {
         if (urlExists) {
             return res.render('index',
                 {
-                    linkCurto: `https://gr-u.onrender.com/${urlExists.shortId}`,
+                    linkGerado: `https://gr-u.onrender.com/${urlExists.shortId}`,
                     error: null
                 }); // aqui a gente renderiza a view e passa o link curto pra ela mostrar pro user
 
@@ -49,7 +49,7 @@ router.post('/shorten', async (req, res) => {
         await newUrl.save(); // usamos o await pq é uma funcao assincrona, entao ele espera salvar pra depois mandar a resposta
         res.render('index',
             {
-                linkCurto: `https://gr-u.onrender.com/${newUrl.shortId}`,
+                linkGerado: `https://gr-u.onrender.com/${newUrl.shortId}`,
                 error: null
             }); // aqui a gente renderiza a view e passa o link curto pra ela mostrar pro user 
     }
@@ -59,7 +59,7 @@ router.post('/shorten', async (req, res) => {
         console.error(err);
         res.render('index',
             {
-                linkCurto: null,
+                linkGerado: null,
                 error: 'Ops, algo deu errado. Tente novamente.'
             }); // exibe a view com a mensagem de erro
     }
@@ -70,7 +70,7 @@ router.post('/shorten', async (req, res) => {
 
 router.get('/', (req, res) => {
     res.render('index', { // aqui a gente renderiza a view e passa o link curto e o erro como null, pq nessa rota a gente so quer mostrar o form vazio, sem link ou erro
-        linkCurto: null,
+        linkGerado: null,
         error: null
     });
 });
