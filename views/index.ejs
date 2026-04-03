@@ -7,8 +7,26 @@
     <title>Encurtador de URLs</title>
 </head>
 <body>
+
+
+ <!-- Badges das tecnologias -->
+        <div class="tech-badges">
+            <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
+            <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express.js" />
+            <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
+            <img src="https://img.shields.io/badge/EJS-8B5A2B?style=for-the-badge&logo=ejs&logoColor=white" alt="EJS" />
+            <img src="https://img.shields.io/badge/Zod-3E6B9E?style=for-the-badge&logo=zod&logoColor=white" alt="Zod" />
+            <img src="https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=white" alt="Render" />
+        </div>
+
+
+
+
+
     <div class="container">
         <h1>Encurtador de URL</h1>
+         
+        
    <!-- Exibe mensagem de erro, se houver -->
         <% if (typeof error !== 'undefined' && error) { %>
         <p style="color: #ff4d4d; font-weight: bold; margin-bottom: 20px;">
@@ -39,6 +57,14 @@
             </div>
         <% } %>
     </div>
+
+<!-- COPYRIGHT - Entre o container e as badges -->
+    <div class="copyright-wrapper">
+        <div class="copyright">
+            © 2026 Geovani Rodrigues
+        </div>
+    </div>
+
 
     <script>  
         function aoCopiar() { // Função para copiar o link encurtado para a área de transferência

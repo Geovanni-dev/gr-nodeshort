@@ -1,144 +1,425 @@
-* {   /* Reset básico para remover margens e padding */
+* {
+    /* Reset básico para remover margens e padding */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 /* Garante que a página ocupe toda a altura da tela */
-html, body {
+html,
+body {
     height: 100%;
 }
 
-/* Estilo para o corpo da página */
+/* Estilo para o corpo da página - Gradiente Node + Express + MongoDB */
 body {
-    background: linear-gradient(135deg, #000000 0%, #0a1128 50%, #2d0a4e 100%);
+    background: linear-gradient(135deg, #539e43 0%, #303030 50%, #00684a 100%);
     background-attachment: fixed;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Estilo para as badges de tecnologia - Estilo GitHub (grudadinhas mas com separação) */
+.tech-badges {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 6px; /* Separadas mas grudadas */
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(83, 158, 67, 0.3);
+    overflow-x: auto;
+    max-width: 90%;
+    scrollbar-width: none;
+}
+
+.tech-badges::-webkit-scrollbar {
+    display: none;
+}
+
+.tech-badges img {
+    transition: transform 0.2s ease;
+    cursor: pointer;
+    flex-shrink: 0;
+    height: 28px;
+    width: auto;
+}
+
+.tech-badges img:hover {
+    transform: translateY(-2px);
 }
 
 /* Estilo para o container principal */
 .container {
-    background: linear-gradient(145deg, rgba(20, 20, 20, 0.9), rgba(40, 20, 80, 0.8));
+    background: rgba(30, 34, 38, 0.559);
     width: 90%;
-    max-width: 800px;
-    padding: 60px 40px;
-    border-radius: 80px; 
+    max-width: 650px;
+    padding: 40px 35px;
+    border-radius: 29px;
     text-align: center;
-    border: 1px solid rgb(144, 5, 236);
-    box-shadow: 0 50px 50px rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(10px);
-    overflow: hidden; 
+    border: 1px solid rgba(83, 158, 67, 0.3);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    overflow: hidden;
+    margin-bottom: 20px;
 }
 
 /* Estilo para o título principal */
 h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-    background: linear-gradient(to right, #ffffff, #a18cd1);
+    font-size: 2.2rem;
+    margin-bottom: 18px;
+    background: linear-gradient(135deg, #8cc084 0%, #539e43 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-weight: bold;
+    font-weight: 600;
+    letter-spacing: -0.5px;
 }
 
-/* Estilo para o parágrafo explicativo */
-p {
-    color: rgba(255, 255, 255, 0.6);
-    margin-bottom: 30px;
+/* Estilo para mensagem de erro */
+p[style*="color: #ff4d4d"] {
+    background: rgba(255, 77, 77, 0.1);
+    border: 1px solid rgba(255, 77, 77, 0.3);
+    border-radius: 12px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+/* Estilo para o formulário */
+form {
+    margin-top: 10px;
 }
 
 /* Estilo para o campo de URL */
 input[type="url"] {
-    width: calc(100% - 40px); 
-    max-width: 500px;
-    padding: 15px 25px;
-    border: 2px solid rgb(144, 5, 236);
-    border-radius: 30px;
-    margin: 40px auto;
-    display: inline-block;
-    font-size: 1rem;
-    outline: none;
-}
-/* Estilo para o campo de URL personalizada */
-input[name="customUrl"] {
     width: calc(100% - 40px);
     max-width: 500px;
-    padding: 15px 25px;
-    border: 2px solid rgba(144, 5, 236, 0.5); 
-    border-radius: 30px;
-    margin: 10px auto 30px auto; 
+    padding: 13px 22px;
+    border: 1.5px solid rgba(83, 158, 67, 0.3);
+    border-radius: 5px;
+    margin: 18px auto;
     display: inline-block;
-    font-size: 1rem;
+    font-size: 0.9rem;
     outline: none;
-    background: rgba(255, 255, 255, 0.05); 
-    color: white;
+    background: rgba(20, 25, 23, 0.7);
+    color: #e0e8e0;
+    transition: all 0.2s ease;
 }
 
-/* Efeito de foco para quando o user clicar */
-input[name="customUrl"]:focus {
-    border-color: rgb(144, 5, 236);
-    box-shadow: 0 0 10px rgba(144, 5, 236, 0.3);
+input[type="url"]:focus {
+    border-color: #539e43;
+    background: rgba(20, 25, 23, 0.9);
+    box-shadow: 0 0 8px rgba(83, 158, 67, 0.3);
 }
 
+/* Estilo para o campo de URL personalizada */
+input[type="text"] {
+    width: calc(100% - 40px);
+    max-width: 500px;
+    padding: 13px 22px;
+    border: 1.5px solid rgba(83, 158, 67, 0.3);
+    border-radius: 5px;
+    margin: 8px auto 25px auto;
+    display: inline-block;
+    font-size: 0.9rem;
+    outline: none;
+    background: rgba(20, 25, 23, 0.7);
+    color: #e0e8e0;
+    transition: all 0.2s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #539e43;
+    background: rgba(20, 25, 23, 0.9);
+    box-shadow: 0 0 8px rgba(83, 158, 67, 0.3);
+}
+
+input::placeholder {
+    color: rgba(160, 180, 150, 0.5);
+}
 
 /* Estilo para o botão de encurtar */
-button {
-    background: linear-gradient(45deg, #6a11cb 0%, #2575fc 100%);
+button[type="submit"] {
+    background: linear-gradient(135deg, #539e43 0%, #3d7a30 100%);
     color: white;
     border: none;
-    padding: 15px 45px;
-    font-size: 1.1rem;
-    border-radius: 30px;
+    padding: 13px 40px;
+    font-size: 0.95rem;
+    border-radius: 48px;
     cursor: pointer;
-    font-weight: bold;
-    transition: transform 0.2s;
-}
-/* Efeito de hover para o botão */
-button:hover {
-    transform: scale(1.05);
+    font-weight: 500;
+    transition: all 0.2s ease;
+    margin-top: 5px;
 }
 
-.success-link { /* Estilo para o link encurtado exibido após o sucesso */
-    display: block;
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #68b856 0%, #4a8a3a 100%);
+    box-shadow: 0 8px 20px rgba(83, 158, 67, 0.35);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* Estilo para o bloco de resultado */
+.bloco-resultado {
     margin-top: 25px;
-    font-size: 1.8rem;
-    color: #f4f4f5;
-    text-decoration: none;
-    font-weight: bold;
-    text-shadow: 0 0 15px rgba(88, 3, 153, 0.604);
-    word-break: break-all; 
+    padding: 18px;
+    background: rgba(83, 158, 67, 0.08);
+    border-radius: 5px;
+    border: 1px solid rgba(83, 158, 67, 0.2);
 }
 
+.success-link {
+    display: inline-block;
+    font-size: 1rem;
+    color: #8cc084;
+    text-decoration: none;
+    font-weight: 500;
+    word-break: break-all;
+    transition: all 0.2s ease;
+    padding: 8px 14px;
+    background: rgba(83, 158, 67, 0.1);
+    border-radius: 5px;
+}
 
-/* Estilos responsivos para mobile */
+.success-link:hover {
+    background: rgba(83, 158, 67, 0.2);
+    color: #a8d4a0;
+}
+
+/* Estilo para o botão de copiar */
+#btnCopiar {
+    background: linear-gradient(135deg, #303030 0%, #1a1a1a 100%);
+    color: white;
+    border: 1px solid rgba(83, 158, 67, 0.3);
+    padding: 8px 28px;
+    font-size: 0.95rem;
+    border-radius: 48px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    margin-top: 12px;
+}
+
+#btnCopiar:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #404040 0%, #2a2a2a 100%);
+    border-color: rgba(83, 158, 67, 0.5);
+}
+
+/* Estilo para o copyright  */
+.copyright {
+    text-align: center;
+    margin: 15px auto;
+    color: rgba(200, 210, 190, 0.5);
+    font-size: 0.75rem;
+    padding: 0 15px;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+/* ========== MEDIA QUERIES ========== */
+
+/* Tablet (768px) */
 @media (max-width: 768px) {
-    .container { /* Ajusta o container para telas menores */
-        width: 95%; 
-        padding: 30px 15px;
-        border-radius: 30px; 
+    body {
+        justify-content: center;
+        padding: 20px 0;
     }
-
-    /* Ajusta o título para telas menores */
-    input[type="url"] {
+    
+    .tech-badges {
+        gap: 5px;
+        margin-bottom: 18px;
+        padding-bottom: 12px;
+        max-width: 95%;
+    }
+    
+    .tech-badges img {
+        height: 24px;
+    }
+    
+    .container {
+        width: 92%;
+        padding: 30px 25px;
+        border-radius: 24px;
+        margin-bottom: 15px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    input[type="url"],
+    input[type="text"] {
         width: 100%;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        padding: 11px 18px;
+        font-size: 0.85rem;
     }
-
-    /* Ajusta o campo de URL personalizada para telas menores */
-    input[name="customUrl"] {
-        width: 100%;
-        margin-bottom: 20px;
+    
+    button[type="submit"] {
+        padding: 11px 32px;
+        font-size: 0.85rem;
     }
-
-    /* Ajusta o botão para telas menores */
+    
     .success-link {
-        font-size: 1rem; 
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        display: block;
-        width: 100%;
+        font-size: 0.9rem;
+        padding: 7px 12px;
+    }
+    
+    .bloco-resultado {
+        padding: 15px;
+    }
+    
+    .copyright {
+        font-size: 0.65rem;
+        margin: 12px auto;
+        white-space: nowrap;
+        overflow-x: auto;
+        max-width: 100%;
+        scrollbar-width: none;
+    }
+    
+    .copyright::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+/* Mobile médio (600px) */
+@media (max-width: 600px) {
+    .tech-badges {
+        gap: 4px;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        max-width: 98%;
+    }
+    
+    .tech-badges img {
+        height: 22px;
+    }
+    
+    .container {
+        padding: 25px 18px;
+    }
+    
+    h1 {
+        font-size: 1.6rem;
+    }
+    
+    input[type="url"],
+    input[type="text"] {
+        padding: 10px 16px;
+        font-size: 0.8rem;
+        margin: 12px auto;
+    }
+    
+    button[type="submit"] {
+        padding: 10px 28px;
+        font-size: 0.8rem;
+    }
+    
+    .success-link {
+        font-size: 0.85rem;
+        padding: 6px 10px;
+    }
+    
+    .copyright {
+        font-size: 0.6rem;
+    }
+}
+
+/* Mobile pequeno (480px) */
+@media (max-width: 480px) {
+    .tech-badges {
+        gap: 3px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+    }
+    
+    .tech-badges img {
+        height: 20px;
+    }
+    
+    .container {
+        padding: 20px 15px;
+        border-radius: 20px;
+    }
+    
+    h1 {
+        font-size: 1.4rem;
+        margin-bottom: 12px;
+    }
+    
+    input[type="url"],
+    input[type="text"] {
+        padding: 8px 14px;
+        font-size: 0.75rem;
+        margin: 10px auto;
+    }
+    
+    button[type="submit"] {
+        padding: 8px 24px;
+        font-size: 0.75rem;
+    }
+    
+    .success-link {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
+    
+    .bloco-resultado {
+        padding: 12px;
+        margin-top: 15px;
+    }
+    
+    #btnCopiar {
+        padding: 6px 20px;
+        font-size: 0.75rem;
+    }
+    
+    .copyright {
+        font-size: 0.55rem;
+        margin: 10px auto;
+    }
+}
+
+/* Mobile muito pequeno (400px) */
+@media (max-width: 400px) {
+    .tech-badges {
+        gap: 2px;
+        padding-bottom: 6px;
+    }
+    
+    .tech-badges img {
+        height: 18px;
+    }
+    
+    .container {
+        padding: 18px 12px;
+    }
+    
+    h1 {
+        font-size: 1.2rem;
+    }
+    
+    input[type="url"],
+    input[type="text"] {
+        padding: 7px 12px;
+        font-size: 0.7rem;
+    }
+    
+    button[type="submit"] {
+        padding: 7px 20px;
+        font-size: 0.7rem;
+    }
+    
+    .copyright {
+        font-size: 0.5rem;
     }
 }
