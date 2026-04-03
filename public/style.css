@@ -24,12 +24,12 @@ body {
     min-height: 100vh;
 }
 
-/* Estilo para as badges de tecnologia - Estilo GitHub (grudadinhas mas com separação) */
+/* Estilo para as badges de tecnologia  */
 .tech-badges {
     display: flex;
     justify-content: center;
     flex-wrap: nowrap;
-    gap: 6px; /* Separadas mas grudadas */
+    gap: 9px;
     margin-bottom: 20px;
     padding-bottom: 15px;
     border-bottom: 2px solid rgba(83, 158, 67, 0.3);
@@ -51,7 +51,7 @@ body {
 }
 
 .tech-badges img:hover {
-    transform: translateY(-2px);
+    transform: scale(1.1);
 }
 
 /* Estilo para o container principal */
@@ -245,6 +245,10 @@ button[type="submit"]:active {
         height: 24px;
     }
     
+    .tech-badges img:hover {
+        transform: scale(1.1);
+    }
+    
     .container {
         width: 92%;
         padding: 30px 25px;
@@ -304,6 +308,10 @@ button[type="submit"]:active {
         height: 22px;
     }
     
+    .tech-badges img:hover {
+        transform: scale(1.1);
+    }
+    
     .container {
         padding: 25px 18px;
     }
@@ -344,6 +352,10 @@ button[type="submit"]:active {
     
     .tech-badges img {
         height: 20px;
+    }
+    
+    .tech-badges img:hover {
+        transform: scale(1.15);
     }
     
     .container {
@@ -398,6 +410,10 @@ button[type="submit"]:active {
     
     .tech-badges img {
         height: 18px;
+    }
+    
+    .tech-badges img:hover {
+        transform: scale(1.2);
     }
     
     .container {
