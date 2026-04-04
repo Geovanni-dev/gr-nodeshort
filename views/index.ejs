@@ -70,45 +70,8 @@
     © 2026 Geovani Rodrigues
 </div>
 
-<script>  
-    function aoCopiar() {  // Funcao para copiar o link
-        const endereco = document.getElementById('url').href;
-        const botao = document.getElementById('btnCopiar');
-        
-        navigator.clipboard.writeText(endereco).then(() => {
-            const textoOriginal = botao.innerText;
-            
-            botao.innerText = "Copiado!";
-            botao.style.background = "#28a745"; 
-            
-            setTimeout(() => {
-                botao.innerText = textoOriginal;
-                botao.style.background = ""; 
-            }, 2000);
-        }).catch(err => {
-            console.error("Erro ao copiar: ", err);
-        });
-    }
-</script>
-
-<script>
-    // Efeito de clique nas badges para mobile
-    const badgeLinks = document.querySelectorAll('.tech-badges a');
-    
-    badgeLinks.forEach(link => {
-        link.addEventListener('touchstart', function() {
-            this.style.transform = 'scale(0.95)';
-        });
-        
-        link.addEventListener('touchend', function() {
-            this.style.transform = 'scale(1)';
-        });
-        
-        link.addEventListener('touchcancel', function() {
-            this.style.transform = 'scale(1)';
-        });
-    });
-</script>
+<!--link do script--->  
+<script src="/script.js"></script>
 
 </body>
 </html>
