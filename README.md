@@ -2,10 +2,6 @@
 
 Interface web e API para encurtar links, redirecionar e monitorar acessos. Projeto Fullstack focado em simplicidade, design moderno e performance.
 
-# 🔗 Encurtador de URL
-
-Interface web e API para encurtar links, redirecionar e monitorar acessos. Projeto Fullstack focado em simplicidade, design moderno e performance.
-
 ## 🚀 Funcionalidades
 
 - ✅ **Encurtar URLs:** Gera códigos aleatórios ou permite apelidos personalizados.
