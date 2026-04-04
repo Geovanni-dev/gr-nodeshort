@@ -2,6 +2,10 @@
 
 Interface web e API para encurtar links, redirecionar e monitorar acessos. Projeto Fullstack focado em simplicidade, design moderno e performance.
 
+# 🔗 Encurtador de URL
+
+Interface web e API para encurtar links, redirecionar e monitorar acessos. Projeto Fullstack focado em simplicidade, design moderno e performance.
+
 ## 🚀 Funcionalidades
 
 - ✅ **Encurtar URLs:** Gera códigos aleatórios ou permite apelidos personalizados.
@@ -20,7 +24,23 @@ Interface web e API para encurtar links, redirecionar e monitorar acessos. Proje
 - **shortid** (Geração de IDs únicos)
 - **valid-url** (Validação de links)
 
+## 🖱️ Badges Clicáveis
+
+As badges de tecnologia no rodapé da aplicação são **totalmente clicáveis** e redirecionam para os sites oficiais de cada ferramenta.
+
+| Badge | Tecnologia | Link |
+|-------|------------|------|
+| <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" width="80"/> | Node.js | [nodejs.org](https://nodejs.org/) |
+| <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" width="80"/> | Express.js | [expressjs.com](https://expressjs.com/) |
+| <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" width="80"/> | MongoDB | [mongodb.com](https://www.mongodb.com/) |
+| <img src="https://img.shields.io/badge/EJS-8B5A2B?style=for-the-badge&logo=ejs&logoColor=white" width="60"/> | EJS | [ejs.co](https://ejs.co/) |
+| <img src="https://img.shields.io/badge/Zod-3E6B9E?style=for-the-badge&logo=zod&logoColor=white" width="60"/> | Zod | [zod.dev](https://zod.dev/) |
+
+**Efeito visual:** Ao clicar, a badge encolhe levemente (`scale: 0.95`) dando feedback tátil.  
+**Mobile:** Sem zoom automático no iOS e sem comportamento estranho de link fantasma.
+
 ## 📁 Estrutura do Projeto
+
 
 ```
 encurtador-url/
