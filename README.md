@@ -15,7 +15,7 @@ Interface web e API para encurtar links, redirecionar e monitorar acessos. Proje
 - ✅ **Contador de Cliques:** Monitora quantas vezes cada link foi acessado.
 - ✅ **Interface Moderna:** UI responsiva com efeito Glassmorphism (EJS + CSS).
 - ✅ **Segurança:** Validação de URLs e bloqueio de caracteres especiais em apelidos via Regex.
-- ✅ **Quick Copy:** Botão para copiar o link gerado direto para a área de transferência com feedback visual.
+- ✅ **Quick Copy:** Botão para copy o link gerado direto para a área de transferência com feedback visual.
 
 ## 🛠 Tecnologias
 
@@ -83,7 +83,7 @@ npm start
 
 O projeto está hospedado no **Render** (plataforma cloud gratuita).
 
-👉 **Acesse a versão ao vivo:** [https://gr-u.onrender.com](https://gr-u.onrender.com)
+👉 **Acesse a versão ao vivo:** [https://gr-s.onrender.com](https://gr-s.onrender.com)
 
 
 ### ☁️ Por que escolhi o Render?

@@ -59,14 +59,14 @@ const shortenController = async (req, res) => {
         shortId: shortUrl,
       });
       await newUrl.save();
-      return res.json({ linkGerado: `https://gr-u.onrender.com/${shortUrl}` });
+      return res.json({ linkGerado: `https://gr-s.onrender.com/${shortUrl}` });
     }
     
     // Verifica se a URL já existe no banco, para n criar outra igual
     const urlExists = await Url.findOne({ originalUrl: url });
     // se existir nao cria uma nova e devolve a que ja tem
     if (urlExists) {
-      return res.json({ linkGerado: `https://gr-u.onrender.com/${urlExists.shortId}` });
+      return res.json({ linkGerado: `https://gr-s.onrender.com/${urlExists.shortId}` });
     }
     
     // Gera o ID aleatorio pro encurtador
@@ -78,7 +78,7 @@ const shortenController = async (req, res) => {
     });
     // Salva no banco e avisa se funcionou ou n
     await newUrl.save(); // aqui usa o await pq é uma funcao assincrona, entao ele espera salvar pra depois mandar a resposta
-    return res.json({ linkGerado: `https://gr-u.onrender.com/${shortUrl}` }); // aqui retorna o link curto pro front via AJAX
+    return res.json({ linkGerado: `https://gr-s.onrender.com/${shortUrl}` }); // aqui retorna o link curto pro front via AJAX
     
   } catch (err) {
     // se der erro, mostra no console e avisa o user

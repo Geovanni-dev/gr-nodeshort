@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GR-NodeShort - Encurtador de URL</title>
     <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
 
     <div class="glow-bg">
@@ -14,10 +16,14 @@
     </div>
 
     <div class="container">
-        
+
         <header class="brand-header">
             <div class="icon-box">
-                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="28" viewBox="0 0 24 24" fill="none" stroke="#020617" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="28" viewBox="0 0 24 24" fill="none"
+                    stroke="#020617" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="4 17 10 11 4 5"></polyline>
+                    <line x1="12" y1="19" x2="20" y2="19"></line>
+                </svg>
             </div>
             <h1 class="brand-title">GR-NODE<span class="brand-highlight">SHORT</span></h1>
         </header>
@@ -25,14 +31,19 @@
         <section class="hero-text">
             <h2 class="hero-title">Otimize seus endpoints</h2>
             <p class="hero-subtitle">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                </svg>
                 Stack: Node • Express • MongoDB
             </p>
         </section>
 
         <main class="main-card">
             <div class="card-inner">
-                
+
                 <!-- MENSAGEM DE ERRO -->
                 <div id="errorContainer"></div>
 
@@ -41,32 +52,47 @@
                         <label class="label">URL Longa</label>
                         <div class="input-wrapper">
                             <span class="input-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                                </svg>
                             </span>
-                            <input type="url" name="url" id="url" placeholder="Cole o link original aqui" class="input-field" required>
+                            <input type="url" name="url" id="url" placeholder="Cole o link original aqui"
+                                class="input-field" required>
                             <button type="button" onclick="handlePaste()" class="btn-paste" title="Colar link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2">
+                                    </path>
+                                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                                </svg>
                             </button>
                         </div>
                     </div>
 
                     <div class="flex-row-group">
                         <div class="alias-wrapper">
-                            <label class="label"><span style="text-transform: lowercase;">gr-u.onrender.com/</span>...</label>
+                            <label class="label"><span
+                                    style="text-transform: lowercase;">gr-s.onrender.com/</span>...</label>
                             <div class="input-wrapper">
-                                <input 
-                                    type="text" 
-                                    name="customUrl" 
-                                    id="customUrl"
-                                    placeholder="sua-url-personalizada" 
-                                    class="input-field alias-input"
-                                    oninput="this.value = this.value.toLowerCase()"
-                                >
+                                <input type="text" name="customUrl" id="customUrl" placeholder="sua-url-personalizada"
+                                    class="input-field alias-input" oninput="this.value = this.value.toLowerCase()">
                             </div>
                         </div>
                         <button type="submit" class="btn-shorten" id="submitBtn">
                             <span>Encurtar</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="6" cy="6" r="3"></circle>
+                                <circle cx="6" cy="18" r="3"></circle>
+                                <line x1="20" y1="4" x2="8.12" y2="15.88"></line>
+                                <line x1="14.47" y1="14.48" x2="20" y2="20"></line>
+                                <line x1="8.12" y1="8.12" x2="12" y2="12"></line>
+                            </svg>
                         </button>
                     </div>
                 </form>
@@ -80,15 +106,24 @@
             <p class="footer-copy">© <span id="year"></span> Geovani Rodrigues · GR-NodeShort</p>
             <div class="footer-links">
                 <a href="https://github.com/Geovanni-dev" target="_blank" class="footer-link">
-                    <svg height="12" width="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" /></svg>
+                    <svg height="12" width="12" viewBox="0 0 16 16" fill="currentColor">
+                        <path
+                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                    </svg>
                     GitHub
                 </a>
                 <a href="https://www.linkedin.com/in/geovani-rodrigues-dev/" target="_blank" class="footer-link">
-                    <svg height="12" width="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451c.979 0 1.771-.773 1.771-1.729V1.729C24 .774 23.208 0 22.225 0z" /></svg>
+                    <svg height="12" width="12" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451c.979 0 1.771-.773 1.771-1.729V1.729C24 .774 23.208 0 22.225 0z" />
+                    </svg>
                     LinkedIn
                 </a>
                 <a href="https://wa.me/5562984585485" target="_blank" class="footer-link">
-                    <svg height="12" width="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.51 3.45 1.47 4.92L2 22l5.35-1.43c1.43.86 3.07 1.32 4.76 1.32 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.12c-1.49 0-2.95-.4-4.21-1.16l-.3-.18-3.18.85.85-3.09-.19-.31c-.82-1.32-1.25-2.83-1.25-4.37 0-4.56 3.71-8.27 8.27-8.27 4.56 0 8.27 3.71 8.27 8.27s-3.71 8.28-8.27 8.28zm4.53-6.19c-.25-.13-1.47-.73-1.7-.81-.23-.08-.39-.13-.56.13s-.64.81-.78.97c-.14.16-.28.18-.53.05-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.39.11-.52.11-.11.25-.29.38-.44.13-.15.17-.25.26-.42.09-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.17 0-.44.06-.67.32-.23.26-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.71 4.3 3.8 2.53 1.09 2.53.73 2.99.68.46-.05 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.11-.21-.18-.46-.31z" /></svg>
+                    <svg height="12" width="12" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.51 3.45 1.47 4.92L2 22l5.35-1.43c1.43.86 3.07 1.32 4.76 1.32 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.12c-1.49 0-2.95-.4-4.21-1.16l-.3-.18-3.18.85.85-3.09-.19-.31c-.82-1.32-1.25-2.83-1.25-4.37 0-4.56 3.71-8.27 8.27-8.27 4.56 0 8.27 3.71 8.27 8.27s-3.71 8.28-8.27 8.28zm4.53-6.19c-.25-.13-1.47-.73-1.7-.81-.23-.08-.39-.13-.56.13s-.64.81-.78.97c-.14.16-.28.18-.53.05-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.39.11-.52.11-.11.25-.29.38-.44.13-.15.17-.25.26-.42.09-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.17 0-.44.06-.67.32-.23.26-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.71 4.3 3.8 2.53 1.09 2.53.73 2.99.68.46-.05 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.11-.21-.18-.46-.31z" />
+                    </svg>
                     WhatsApp
                 </a>
             </div>
@@ -97,9 +132,9 @@
 
     <script>
         console.log("🚀 Script carregado com sucesso!");
-        
-        /*================== funcao pra colar do clipboard ==================*/
-        window.handlePaste = async function() {
+
+        /*================== funcao pra colar do clipboard */
+        window.handlePaste = async function () {
             try {
                 const text = await navigator.clipboard.readText();
                 const urlInput = document.getElementById('url');
@@ -115,17 +150,17 @@
                 alert("Não foi possível acessar a área de transferência. Cole manualmente (Ctrl+V)");
             }
         };
-        
-        /*================== funcao pra mostrar mensagem de erro ==================*/
-        function mostrarErro(mensagem) {
+
+        /*================== funcao pra mostrar mensagem de erro*/
+        function errorView(mensagem) {
             const errorContainer = document.getElementById('errorContainer');
             errorContainer.innerHTML = `
                 <div class="error-banner" id="errorBanner">
                     ${mensagem}
                 </div>
             `;
-            
-            /*================== remove erro depois de 3 segundos ==================*/
+
+            /*================== remove erro depois de 3 segundos */
             setTimeout(() => {
                 const errorBanner = document.getElementById('errorBanner');
                 if (errorBanner) {
@@ -133,74 +168,74 @@
                 }
             }, 3000);
         }
-        
-        /*================== funcao pra mostrar resultado ==================*/
-        function mostrarResultado(link) {
+
+        /*================== funcao pra mostrar resultado */
+        function resultView(link) {
             const resultContainer = document.getElementById('resultContainer');
             resultContainer.innerHTML = `
                 <div class="result-area">
                     <p class="result-url" id="shortUrlText">${link}</p>
-                    <button type="button" onclick="aoCopiar()" class="btn-copy" id="btnCopy" title="Copiar Link">
+                    <button type="button" onclick="copyUrl()" class="btn-copy" id="btnCopy" title="copy Link">
                         <svg id="copyIcon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                         <svg id="checkIcon" style="display:none" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                     </button>
                 </div>
             `;
         }
-        
-        /*================== funcao pra copiar o link ==================*/
-        window.aoCopiar = function() {
+
+        /*=================== funcao pra copy o link*/
+        window.copyUrl = function () {
             const shortUrlElement = document.getElementById('shortUrlText');
             if (!shortUrlElement) {
                 console.error("Elemento não encontrado");
                 return;
             }
-            
+
             const texto = shortUrlElement.textContent.trim();
             if (!texto) {
                 console.error("Texto vazio");
                 return;
             }
-            
+
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(texto)
                     .then(() => {
-                        mostrarFeedbackCopiado();
+                        viewFeedbackCopy();
                     })
                     .catch(err => {
-                        console.error("Erro ao copiar:", err);
-                        copiarFallback(texto);
+                        console.error("Erro ao copy:", err);
+                        copyFallback(texto);
                     });
             } else {
-                copiarFallback(texto);
+                copyFallback(texto);
             }
         };
-        
-        /*================== fallback pra copiar ==================*/
-        function copiarFallback(texto) {
+
+        /*================== fallback pra copy*/
+        function copyFallback(texto) {
             const textarea = document.createElement('textarea');
             textarea.value = texto;
             textarea.style.position = 'fixed';
             textarea.style.top = '-9999px';
             document.body.appendChild(textarea);
             textarea.select();
-            
+
             try {
                 document.execCommand('copy');
-                mostrarFeedbackCopiado();
+                viewFeedbackCopy();
             } catch (err) {
                 console.error("Erro:", err);
-                alert("Não foi possível copiar");
+                alert("Não foi possível copy");
             }
             document.body.removeChild(textarea);
         }
-        
-        /*================== feedback visual de copiado ==================*/
-        function mostrarFeedbackCopiado() {
+
+        /*================== feedback visual de copiado*/
+            function viewFeedbackCopy() {
             const botao = document.getElementById('btnCopy');
             const copyIcon = document.getElementById('copyIcon');
             const checkIcon = document.getElementById('checkIcon');
-            
+
             if (copyIcon && checkIcon) {
                 copyIcon.style.display = 'none';
                 checkIcon.style.display = 'block';
@@ -208,7 +243,7 @@
             if (botao) {
                 botao.style.backgroundColor = '#059669';
             }
-            
+
             setTimeout(() => {
                 if (copyIcon && checkIcon) {
                     copyIcon.style.display = 'block';
@@ -219,19 +254,19 @@
                 }
             }, 2000);
         }
-        
-        /*================== envio do formulario via AJAX ==================*/
+
+        /*====================== envio do formulario via AJAX */
         document.getElementById('shortenForm').addEventListener('submit', async (e) => {
             e.preventDefault(); // Impede a página de recarregar
-            
+
             const url = document.getElementById('url').value;
             const customUrl = document.getElementById('customUrl').value;
             const submitBtn = document.getElementById('submitBtn');
-            
+
             // Desabilita o botão enquanto processa
             submitBtn.disabled = true;
             submitBtn.style.opacity = '0.5';
-            
+
             try {
                 const response = await fetch('/shorten', {
                     method: 'POST',
@@ -240,12 +275,12 @@
                     },
                     body: JSON.stringify({ url, customUrl })
                 });
-                
+
                 const data = await response.json();
-                
+
                 if (response.ok) {
                     // Sucesso - mostra o link gerado
-                    mostrarResultado(data.linkGerado);
+                    resultView(data.linkGerado);
                     // Limpa o erro se tiver
                     document.getElementById('errorContainer').innerHTML = '';
                     // Limpa o campo de URL
@@ -253,21 +288,21 @@
                     document.getElementById('customUrl').value = '';
                 } else {
                     // Erro - mostra a mensagem
-                    mostrarErro(data.error);
+                    errorView(data.error);
                     // Limpa o resultado se tiver
                     document.getElementById('resultContainer').innerHTML = '';
                 }
             } catch (err) {
                 console.error("Erro na requisição:", err);
-                mostrarErro("Erro ao conectar com o servidor. Tente novamente.");
+                errorView("Erro ao conectar com o servidor. Tente novamente.");
             } finally {
                 // Reabilita o botão
                 submitBtn.disabled = false;
                 submitBtn.style.opacity = '1';
             }
         });
-        
-        /*================== atualiza o ano no footer ==================*/
+
+        /*================== atualiza o ano no footer*/
         document.addEventListener('DOMContentLoaded', () => {
             const yearElement = document.getElementById('year');
             if (yearElement) {
@@ -276,4 +311,5 @@
         });
     </script>
 </body>
+
 </html>
