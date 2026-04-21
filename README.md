@@ -1,4 +1,4 @@
-# 🔗 Encurtador de URL
+# 🔗 GR-NODESHORT
 
 Interface web e API para encurtar links, redirecionar e monitorar acessos. Projeto Fullstack focado em simplicidade, design moderno e performance.
 
