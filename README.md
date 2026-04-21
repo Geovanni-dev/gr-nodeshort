@@ -5,7 +5,7 @@ Interface web e API para encurtar links, redirecionar e monitorar acessos. Proje
 ## 🖥️ **Demonstração**
 
 <p align="center">
-<img src="./public/images/GR-NODESHORT.png" width="400" alt="NodeShort Demo" />
+<img src="./public/images/GR-NODESHORT.png" width="300" alt="NodeShort Demo" />
 </p>
 
 ## 🚀 Funcionalidades
@@ -31,18 +31,16 @@ Interface web e API para encurtar links, redirecionar e monitorar acessos. Proje
 
 ```
 encurtador-url/
-├── public/ # Arquivos estáticos (CSS, Imagens)
-├── views/ # Templates da interface (EJS)
-├── models/ # Schema do banco de dados (Mongoose)
-│ └── Url.js # Modelo de dados da URL
-├── routes/ # Definição das rotas
-│ └── urlRoutes.js # Rotas do encurtador
-├── controllers/ # Lógica de negócio
-│ └── urlController.js # Controlador com validação Zod
-├── middlewares/ # Middlewares personalizados
-│ └── validate.js # Middleware de validação Zod
-├── server.js # Arquivo principal do servidor
-└── .env # Variáveis de ambiente (Mongo URI)
+├── public/              # Arquivos estáticos (CSS, Imagens)
+├── views/               # Templates da interface (EJS)
+├── models/              # Schema do banco de dados (Mongoose)
+│ └── Url.js             # Modelo de dados da URL
+├── routes/              # Definição das rotas
+│ └── urlRoutes.js       # Rotas do encurtador
+├── controllers/         # Lógica de negócio
+│ └── urlController.js   # Controlador com validação Zod
+├── server.js            # Arquivo principal do servidor
+└── .env                 # Variáveis de ambiente (Mongo URI)
 ```
 
 ## 🧠 Como Funciona (Lógica de Url personalizada)
