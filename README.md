@@ -10,7 +10,7 @@ Interface web e API para encurtar links, redirecionar e monitorar acessos. Proje
 
 ## 🚀 Funcionalidades
 
-- ✅ **Encurtar URLs:** Gera códigos aleatórios ou permite apelidos personalizados.
+- ✅ **Encurtar URLs:** Gera códigos aleatórios ou permite URLs personalizados.
 - ✅ **Redirecionamento:** Encaminha o usuário para o link original instantaneamente.
 - ✅ **Contador de Cliques:** Monitora quantas vezes cada link foi acessado.
 - ✅ **Interface Moderna:** UI responsiva com efeito Glassmorphism (EJS + CSS).
@@ -92,6 +92,7 @@ O projeto está hospedado no **Render** (plataforma cloud gratuita).
 - ✅ Integração direta com GitHub
 - ✅ Suporte nativo a Node.js
 - ✅ SSL automático (HTTPS)
+
 
 ## 📄 Licença
 
