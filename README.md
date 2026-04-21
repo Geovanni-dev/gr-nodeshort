@@ -2,6 +2,12 @@
 
 Interface web e API para encurtar links, redirecionar e monitorar acessos. Projeto Fullstack focado em simplicidade, design moderno e performance.
 
+## 🖥️ **Demonstração**
+
+<p align="center">
+<img src="./public/images/GR-NODESHORT.png" width="400" alt="NodeShort Demo" />
+</p>
+
 ## 🚀 Funcionalidades
 
 - ✅ **Encurtar URLs:** Gera códigos aleatórios ou permite apelidos personalizados.
@@ -19,21 +25,6 @@ Interface web e API para encurtar links, redirecionar e monitorar acessos. Proje
 - **Zod** (Validação de dados e schemas)
 - **shortid** (Geração de IDs únicos)
 - **valid-url** (Validação de links)
-
-## 🖱️ Badges Clicáveis
-
-As badges de tecnologia no rodapé da aplicação são **totalmente clicáveis** e redirecionam para os sites oficiais de cada ferramenta.
-
-| Badge | Tecnologia | Link |
-|-------|------------|------|
-| <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" width="80"/> | Node.js | [nodejs.org](https://nodejs.org/) |
-| <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" width="80"/> | Express.js | [expressjs.com](https://expressjs.com/) |
-| <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" width="80"/> | MongoDB | [mongodb.com](https://www.mongodb.com/) |
-| <img src="https://img.shields.io/badge/EJS-8B5A2B?style=for-the-badge&logo=ejs&logoColor=white" width="60"/> | EJS | [ejs.co](https://ejs.co/) |
-| <img src="https://img.shields.io/badge/Zod-3E6B9E?style=for-the-badge&logo=zod&logoColor=white" width="60"/> | Zod | [zod.dev](https://zod.dev/) |
-
-**Efeito visual:** Ao clicar, a badge encolhe levemente (`scale: 0.95`) dando feedback tátil.  
-**Mobile:** Sem zoom automático no iOS e sem comportamento estranho de link fantasma.
 
 ## 📁 Estrutura do Projeto
 
@@ -62,51 +53,6 @@ O sistema aceita um parâmetro opcional chamado `customUrl`:
 - **Com Url personalizada:** O servidor valida se a Url personalizada já existe no banco. Se estiver livre, o link curto assume esse nome.
 - **Limpeza Automática:** O backend limpa espaços vazios e o HTML valida o formato para garantir que o link funcione em qualquer navegador.
 
-
-## 🔒 Validação com Zod
-
-O projeto utiliza **Zod** para validar todos os dados recebidos pela API:
-
-### Schemas de Validação
-
-```javascript
-// Validação de URL para encurtamento
-const shortenUrlSchema = z.object({
-  customUrl: z
-    .string()
-    .regex(
-      /^[a-zA-Z0-9_-]+$/,
-      "A URL personalizada só pode conter letras, números, hífens e underscores.",
-    ).optional().or(z.literal("")), // Permite que seja opcional ou uma string vazia
-});
-
-// Validação de URL para redirecionamento
-const redirectUrlSchema = z.object({
-  shortId: z.string().regex(
-    /^[a-zA-Z0-9_-]+$/,
-    "O ID da URL só pode conter letras, números, hífens e underscores.",
-  ),
-});
-````
-
-### Middleware de Validação
-
-````javascript
-// Middleware de validação com Zod - verifica se os dados da requisição estão de acordo com o schema do zod (Genérico)
-const validate = (schema) => {
-  return (req, res, next) => {
-    try {
-      schema.parse(req.body);
-      next();
-    } catch (error) {
-      return res.status(400).json({ 
-        error: 'Dados inválidos',
-        details: error.errors 
-      });
-    }
-  };
-};
-````
 
 ## 📦 Instalação e Uso
 
@@ -141,7 +87,6 @@ O projeto está hospedado no **Render** (plataforma cloud gratuita).
 
 👉 **Acesse a versão ao vivo:** [https://gr-u.onrender.com](https://gr-u.onrender.com)
 
-> ⚠️ *Nota: por estar no plano gratuito, o serviço pode "dormir" após períodos sem uso. Na primeira requisição, pode levar alguns segundos para reativar.*
 
 ### ☁️ Por que escolhi o Render?
 

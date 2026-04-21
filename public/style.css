@@ -1,517 +1,457 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;700;900&display=swap');
+
+/*===========================cores principais */
+:root {
+    --bg-color: #020617;
+    --emerald-main: #10b981;
+    --emerald-glow: rgba(16, 185, 129, 0.3);
+    --zinc-dark: rgba(9, 9, 11, 0.4);
+}
+
+/*=============reset e configuracoes globais */
 * {
-    /* Reset básico para remover margens e padding */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Garante que a página ocupe toda a altura da tela */
-html,
 body {
-    height: 100%;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: #ecfdf5;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Estilo para o corpo da página - Gradiente Node + Express + MongoDB */
-body {
-    background: linear-gradient(135deg, #539e43 0%, #303030 50%, #00684a 100%);
-    background-attachment: fixed;
+/*====================== efeitos de fundo glow */
+.glow-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.glow-1 {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 50%;
+    height: 50%;
+    background: rgba(5, 150, 105, 0.1);
+    filter: blur(120px);
+    border-radius: 9999px;
+}
+
+.glow-2 {
+    position: absolute;
+    bottom: -10%;
+    right: -10%;
+    width: 50%;
+    height: 50%;
+    background: rgba(16, 185, 129, 0.1);
+    filter: blur(120px);
+    border-radius: 9999px;
+}
+
+/*======================== container principal */
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 42rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-    position: relative;
-    min-height: 100vh;
+    padding: 1rem;
 }
 
-/* Remove zoom automático no iOS ao clicar em inputs */
-input[type="url"],
-input[type="text"],
-button {
-    font-size: 16px;
+/*================== header*/
+.brand-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
 }
 
-/* Estilo para o título das tecnologias */
-.tech-title {
+.icon-box {
+    padding: 0.625rem;
+    background: var(--emerald-main);
+    border-radius: 0.75rem;
+    box-shadow: 0 0 20px var(--emerald-glow);
+}
+
+.brand-title {
+    font-size: 1.875rem;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+}
+
+.brand-highlight {
+    color: var(--emerald-main);
+}
+
+/*================== ===texto hero*/
+.hero-text {
     text-align: center;
-    font-size: 1rem;
-    font-weight: 500;
-    color: rgba(200, 210, 190, 0.7);
-    margin-bottom: 12px;
-    letter-spacing: 1px;
+    margin-bottom: 2rem;
+}
+
+.hero-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #a1a1aa;
+}
+
+.hero-subtitle {
+    color: #52525b;
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/*===================== Card principal */
+.main-card {
+    width: 100%;
+    background: var(--zinc-dark);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(16, 185, 129, 0.1);
+    padding: 0.25rem;
+    border-radius: 2rem;
+}
+
+.card-inner {
+    background: rgba(2, 6, 23, 0.95);
+    padding: 1.5rem;
+    border-radius: 1.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/*======================= grupo de input url longa */
+.input-group {
+    margin-bottom: 1.25rem;
+}
+
+.label {
+    font-size: 9px;
+    font-weight: 800;
+    color: rgba(16, 185, 129, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-left: 0.25rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(16, 185, 129, 0.3);
+}
+
+/*====================== campo de input*/
+.input-field {
+    width: 100%;
+    background: rgba(24, 24, 27, 0.5);
+    border: 1px solid rgba(16, 185, 129, 0.1);
+    border-radius: 0.75rem;
+    padding: 1rem 4.5rem 1rem 3rem;
+    color: #ecfdf5;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    text-overflow: ellipsis;
+    line-height: 1.5;
+}
+
+/*=======================tira o autocomplete e autofocus dos inputs */
+.input-field:-webkit-autofill,
+.input-field:-webkit-autofill:hover,
+.input-field:-webkit-autofill:focus,
+.input-field:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px rgba(24, 24, 27, 0.9) inset !important;
+    -webkit-text-fill-color: #ecfdf5 !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/*===========================remove o outline azul feio do focus */
+.input-field:focus {
+    outline: none;
+    border-color: rgba(16, 185, 129, 0.5);
+    background: rgba(24, 24, 27, 0.8);
+}
+
+/*=========================remove o autofill do navegador */
+input:-webkit-autofill {
+    transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+/*============= botao de colar*/
+.btn-paste {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.6rem;
+    background: transparent !important;
+    border: none;
+    color: #52525b;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-paste:hover {
+    color: var(--emerald-main);
+    background: rgba(16, 185, 129, 0.05) !important;
+    border-radius: 0.5rem;
+}
+
+/*========================= linha flexivel responsiva*/
+.flex-row-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+    .flex-row-group {
+        flex-direction: row;
+        align-items: flex-end;
+        gap: 1rem;
+    }
+    
+    .alias-wrapper {
+        flex: 2; 
+        min-width: 0;
+    }
+    
+    .btn-shorten {
+        flex: 1;
+        width: auto; 
+        min-width: 120px; 
+        white-space: nowrap; 
+    }
+}
+
+.alias-input {
+    padding-left: 4.5rem !important;
+    width: 100%;
+}
+
+.alias-wrapper .input-field {
+    font-size: 0.85rem;
+    padding-right: 0.75rem;
+}
+
+.alias-input::placeholder {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.3);
+    white-space: nowrap;
+    overflow: visible;
+}
+
+@media (min-width: 640px) {
+    .alias-input::placeholder {
+        font-size: 0.85rem;
+    }
+}
+
+/*============================ botao encurtar*/
+.btn-shorten {
+    width: 100%;
+    height: 3.375rem;
+    background: var(--emerald-main);
+    color: #020617;
+    font-weight: 900;
+    border-radius: 0.75rem;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-shorten:hover {
+    background: #34d399;
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+}
+
+.btn-shorten:active {
+    transform: scale(0.97);
+}
+
+/*========================== mensagem de erro*/
+.error-banner {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.08), rgba(239, 68, 68, 0.02));
+    border-left: 4px solid #ef4444;
+    border-radius: 0.75rem;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
+    color: #fca5a5;
+    font-size: 0.875rem;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-left-width: 4px;
     text-transform: uppercase;
 }
 
-/* Ajuste no margin do tech-badges */
-.tech-badges {
+.error-banner::before {
+    content: "✕";
+    font-size: 1rem;
+    font-weight: 900;
+    color: #ef4444;
+}
+
+/*================================area de resultado link gerado*/
+.result-area {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(16, 185, 129, 0.05);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: 0.75rem;
     display: flex;
-    justify-content: center;
-    flex-wrap: nowrap;
-    gap: 6px;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-bottom: 2px solid rgba(83, 158, 67, 0.3);
-    overflow-x: auto;
-    max-width: 90%;
-    scrollbar-width: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
-/* Estilo para as badges de tecnologia */
-.tech-badges {
-    display: flex;
-    justify-content: center;
-    flex-wrap: nowrap;
-    gap: 6px;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-bottom: 2px solid rgba(83, 158, 67, 0.3);
-    overflow-x: auto;
-    max-width: 90%;
-    scrollbar-width: none;
+/*============================ texto do link gerado*/
+.result-url {
+    font-family: 'JetBrains Mono', monospace;
+    color: #6ee7b7;
+    font-size: 0.95rem;
+    word-break: break-all;
+    flex: 1;
 }
 
-.tech-badges::-webkit-scrollbar {
-    display: none;
-}
-
-.tech-badges a {
-    text-decoration: none;
-    display: inline-flex;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.tech-badges img {
-    transition: transform 0.1s ease;
+/*================================ botao de copiar sem fundo*/
+.btn-copy {
+    padding: 0.4rem;
+    background: transparent !important;
+    color: var(--emerald-main);
+    border-radius: 0.5rem;
+    border: none;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
     flex-shrink: 0;
-    height: 28px;
     width: auto;
-    pointer-events: none;
+    min-width: auto;
 }
 
-.tech-badges a:first-child {
-    margin-left: 5px;
+.btn-copy:hover {
+    background: rgba(16, 185, 129, 0.1) !important;
+    transform: scale(1.05);
 }
 
-.tech-badges a:last-child {
-    margin-right: 5px;
-}
-
-/* Efeito de clique */
-.tech-badges a:active img {
+.btn-copy:active {
     transform: scale(0.95);
 }
 
-/* Estilo para o container principal */
-.container {
-    background: rgba(30, 34, 38, 0.559);
-    width: 90%;
-    max-width: 650px;
-    padding: 40px 35px;
-    border-radius: 29px;
+/*================================tamanho dos icones do botao copiar*/
+.btn-copy svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2;
+}
+
+/*=========================== icone de check quando copiado*/
+#checkIcon {
+    color: var(--emerald-main);
+}
+
+/*=============================rodape*/
+.footer {
+    margin-top: 2.5rem;
     text-align: center;
-    border: 1px solid rgba(83, 158, 67, 0.3);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(12px);
-    overflow: hidden;
-    margin-bottom: 20px;
+    width: 100%;
 }
 
-/* Estilo para o título principal */
-h1 {
-    font-size: 2.2rem;
-    margin-bottom: 18px;
-    background: linear-gradient(135deg, #8cc084 0%, #539e43 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 600;
-    letter-spacing: -0.5px;
+.footer-copy {
+    font-size: 8px;
+    font-weight: 900;
+    color: rgba(16, 185, 129, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
 }
 
-/* Estilo para mensagem de erro */
-p[style*="color: #ff4d4d"] {
-    background: rgba(255, 77, 77, 0.1);
-    border: 1px solid rgba(255, 77, 77, 0.3);
-    border-radius: 12px;
-    padding: 10px;
-    margin: 10px 0;
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 1rem;
 }
 
-/* Estilo para o formulário */
-form {
-    margin-top: 10px;
-}
-
-/* Estilo para o campo de URL */
-input[type="url"] {
-    width: calc(100% - 40px);
-    max-width: 500px;
-    padding: 13px 22px;
-    border: 1.5px solid rgba(83, 158, 67, 0.3);
-    border-radius: 5px;
-    margin: 18px auto;
-    display: inline-block;
-    font-size: 16px;
-    outline: none;
-    background: rgba(20, 25, 23, 0.7);
-    color: #e0e8e0;
-    transition: all 0.2s ease;
-}
-
-input[type="url"]:focus {
-    border-color: #539e43;
-    background: rgba(20, 25, 23, 0.9);
-    box-shadow: 0 0 8px rgba(83, 158, 67, 0.3);
-}
-
-/* Estilo para o campo de URL personalizada */
-input[type="text"] {
-    width: calc(100% - 40px);
-    max-width: 500px;
-    padding: 13px 22px;
-    border: 1.5px solid rgba(83, 158, 67, 0.3);
-    border-radius: 5px;
-    margin: 8px auto 25px auto;
-    display: inline-block;
-    font-size: 16px;
-    outline: none;
-    background: rgba(20, 25, 23, 0.7);
-    color: #e0e8e0;
-    transition: all 0.2s ease;
-}
-
-input[type="text"]:focus {
-    border-color: #539e43;
-    background: rgba(20, 25, 23, 0.9);
-    box-shadow: 0 0 8px rgba(83, 158, 67, 0.3);
-}
-
-input::placeholder {
-    color: rgba(160, 180, 150, 0.5);
-}
-
-/* Estilo para o botão de encurtar */
-button[type="submit"] {
-    background: linear-gradient(135deg, #539e43 0%, #3d7a30 100%);
-    color: white;
-    border: none;
-    padding: 13px 40px;
-    font-size: 16px;
-    border-radius: 48px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    margin-top: 5px;
-}
-
-button[type="submit"]:hover {
-    transform: translateY(-2px);
-    background: linear-gradient(135deg, #68b856 0%, #4a8a3a 100%);
-    box-shadow: 0 8px 20px rgba(83, 158, 67, 0.35);
-}
-
-button[type="submit"]:active {
-    transform: translateY(0);
-}
-
-/* Estilo para o bloco de resultado */
-.bloco-resultado {
-    margin-top: 25px;
-    padding: 18px;
-    background: rgba(83, 158, 67, 0.08);
-    border-radius: 5px;
-    border: 1px solid rgba(83, 158, 67, 0.2);
-}
-
-.success-link {
-    display: inline-block;
-    font-size: 1rem;
-    color: #8cc084;
+.footer-link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 10px;
+    font-weight: 700;
+    color: #52525b;
     text-decoration: none;
-    font-weight: 500;
-    word-break: break-all;
-    transition: all 0.2s ease;
-    padding: 8px 14px;
-    background: rgba(83, 158, 67, 0.1);
-    border-radius: 5px;
+    transition: color 0.2s, transform 0.2s;
 }
 
-.success-link:hover {
-    background: rgba(83, 158, 67, 0.2);
-    color: #a8d4a0;
+.footer-link:hover {
+    color: var(--emerald-main);
+    transform: translateY(-1px);
 }
 
-/* Estilo para o botão de copiar */
-#btnCopiar {
-    background: linear-gradient(135deg, #303030 0%, #1a1a1a 100%);
-    color: white;
-    border: 1px solid rgba(83, 158, 67, 0.3);
-    padding: 8px 28px;
-    font-size: 16px;
-    border-radius: 48px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    margin-top: 12px;
-}
-
-#btnCopiar:hover {
-    transform: translateY(-2px);
-    background: linear-gradient(135deg, #404040 0%, #2a2a2a 100%);
-    border-color: rgba(83, 158, 67, 0.5);
-}
-
-/* Estilo para o copyright  */
-.copyright {
-    text-align: center;
-    margin: 15px auto;
-    color: rgba(200, 210, 190, 0.5);
-    font-size: 0.75rem;
-    padding: 0 15px;
-    line-height: 1.4;
-    white-space: nowrap;
-}
-
-/* ========== MEDIA QUERIES ========== */
-
-/* Tablet (768px) */
+/*================== feedback para mobile toque*/
 @media (max-width: 768px) {
-    body {
-        justify-content: center;
-        padding: 20px 0;
+    .footer-link {
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        transition: all 0.1s ease;
     }
     
-    .tech-badges {
-        gap: 5px;
-        margin-bottom: 18px;
-        padding-bottom: 12px;
-        padding-left: 8px;
-        padding-right: 8px;
-        max-width: 95%;
+    .footer-link:active {
+        transform: scale(1.1);
+        color: var(--emerald-main);
     }
     
-    .tech-badges img {
-        height: 24px;
+    .btn-shorten:active {
+        transform: scale(0.97);
+        background: #34d399;
     }
     
-    .tech-badges a:first-child {
-        margin-left: 3px;
+    .btn-copy:active {
+        background: rgba(16, 185, 129, 0.2) !important;
+        transform: scale(0.95);
     }
     
-    .tech-badges a:last-child {
-        margin-right: 3px;
-    }
-    
-    .container {
-        width: 92%;
-        padding: 30px 25px;
-        border-radius: 24px;
-        margin-bottom: 15px;
-    }
-    
-    h1 {
-        font-size: 1.8rem;
-    }
-    
-    input[type="url"],
-    input[type="text"] {
-        width: 100%;
-        padding: 11px 18px;
-        font-size: 16px;
-    }
-    
-    button[type="submit"] {
-        padding: 11px 32px;
-        font-size: 16px;
-    }
-    
-    .success-link {
-        font-size: 0.9rem;
-        padding: 7px 12px;
-    }
-    
-    .bloco-resultado {
-        padding: 15px;
-    }
-    
-    .copyright {
-        font-size: 0.65rem;
-        margin: 12px auto;
-        white-space: nowrap;
-        overflow-x: auto;
-        max-width: 100%;
-        scrollbar-width: none;
-    }
-    
-    .copyright::-webkit-scrollbar {
-        display: none;
-    }
-}
-
-/* Mobile médio (600px) */
-@media (max-width: 600px) {
-    .tech-badges {
-        gap: 4px;
-        margin-bottom: 15px;
-        padding-bottom: 10px;
-        padding-left: 6px;
-        padding-right: 6px;
-        max-width: 98%;
-    }
-    
-    .tech-badges img {
-        height: 22px;
-    }
-    
-    .tech-badges a:first-child {
-        margin-left: 2px;
-    }
-    
-    .tech-badges a:last-child {
-        margin-right: 2px;
-    }
-    
-    .container {
-        padding: 25px 18px;
-    }
-    
-    h1 {
-        font-size: 1.6rem;
-    }
-    
-    input[type="url"],
-    input[type="text"] {
-        padding: 10px 16px;
-        font-size: 16px;
-        margin: 12px auto;
-    }
-    
-    button[type="submit"] {
-        padding: 10px 28px;
-        font-size: 16px;
-    }
-    
-    .success-link {
-        font-size: 0.85rem;
-        padding: 6px 10px;
-    }
-    
-    .copyright {
-        font-size: 0.6rem;
-    }
-}
-
-/* Mobile pequeno (480px) */
-@media (max-width: 480px) {
-    .tech-badges {
-        gap: 3px;
-        margin-bottom: 12px;
-        padding-bottom: 8px;
-        padding-left: 5px;
-        padding-right: 5px;
-    }
-    
-    .tech-badges img {
-        height: 20px;
-    }
-    
-    .tech-badges a:first-child {
-        margin-left: 1px;
-    }
-    
-    .tech-badges a:last-child {
-        margin-right: 1px;
-    }
-    
-    .container {
-        padding: 20px 15px;
-        border-radius: 20px;
-    }
-    
-    h1 {
-        font-size: 1.4rem;
-        margin-bottom: 12px;
-    }
-    
-    input[type="url"],
-    input[type="text"] {
-        padding: 8px 14px;
-        font-size: 16px;
-        margin: 10px auto;
-    }
-    
-    button[type="submit"] {
-        padding: 8px 24px;
-        font-size: 16px;
-    }
-    
-    .success-link {
-        font-size: 0.8rem;
-        padding: 5px 10px;
-    }
-    
-    .bloco-resultado {
-        padding: 12px;
-        margin-top: 15px;
-    }
-    
-    #btnCopiar {
-        padding: 6px 20px;
-        font-size: 16px;
-    }
-    
-    .copyright {
-        font-size: 0.55rem;
-        margin: 10px auto;
-    }
-}
-
-/* Mobile muito pequeno (400px) */
-@media (max-width: 400px) {
-    .tech-badges {
-        gap: 2px;
-        padding-bottom: 6px;
-        padding-left: 4px;
-        padding-right: 4px;
-    }
-    
-    .tech-badges img {
-        height: 18px;
-    }
-    
-    .tech-badges a:first-child {
-        margin-left: 0px;
-    }
-    
-    .tech-badges a:last-child {
-        margin-right: 0px;
-    }
-    
-    .container {
-        padding: 18px 12px;
-    }
-    
-    h1 {
-        font-size: 1.2rem;
-    }
-    
-    input[type="url"],
-    input[type="text"] {
-        padding: 7px 12px;
-        font-size: 16px;
-    }
-    
-    button[type="submit"] {
-        padding: 7px 20px;
-        font-size: 16px;
-    }
-    
-    .copyright {
-        font-size: 0.5rem;
+    .btn-paste:active {
+        background: rgba(16, 185, 129, 0.2) !important;
+        color: var(--emerald-main);
+        transform: scale(0.95);
     }
 }

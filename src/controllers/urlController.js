@@ -28,36 +28,29 @@ const redirectUrlSchema = z.object({
 
 //==========================================Fuçoes dos controllers
 
+
 // FUNCAO PRA CRIAR O LINK ENCURTADO
 const shortenController = async (req, res) => {
   try {
-    let { url, customUrl } = req.body; //  Pega a URL e a URL personalizada (se tiver) que vieram do formulario
+    let { url, customUrl } = req.body; // Pega a URL e a URL personalizada (se tiver) que vieram do formulario
     if (customUrl) {
       customUrl = customUrl.replace(/\s+/g, ""); // Remove espaços em branco
     }
     const validation = shortenUrlSchema.safeParse({ customUrl });
     if (!validation.success) {
-      return res.render("index", {
-        linkGerado: null,
-        error: validation.error.errors[0].message, // Exibe a mensagem de erro específica do regex
-      });
+      return res.status(400).json({ error: validation.error.errors[0].message });
     }
     if (!validUrl.isUri(url)) {
       // Verifica se a URL é válida usando a lib valid-url
-      return res.render("index", {
-        linkGerado: null,
-        error: "URL inválida!",
-      });
+      return res.status(400).json({ error: "URL inválida!" });
     }
     let shortUrl; // Variavel pra guardar o link curto que vai ser criado
+    
     if (customUrl) {
       // Se tiver uma URL personalizada, verifica se ela já existe no banco
       const customUrlExists = await Url.findOne({ shortId: customUrl });
       if (customUrlExists) {
-        return res.render("index", {
-          linkGerado: null, // Se a URL personalizada já existir, avisa o user
-          error: " Está URL já está em uso. Por favor escolha outra.",
-        });
+        return res.status(400).json({ error: "URL em uso. Por favor escolha outra." }); // Se existir, avisa o user
       }
       shortUrl = customUrl; // Se a URL personalizada for válida e não existir, usa ela como shortId
       const newUrl = new Url({
@@ -66,20 +59,16 @@ const shortenController = async (req, res) => {
         shortId: shortUrl,
       });
       await newUrl.save();
-      return res.render("index", {
-        linkGerado: `https://gr-u.onrender.com/${shortUrl}`,
-        error: null,
-      }); // renderiza a view e passa o link curto pra ela mostrar pro user
+      return res.json({ linkGerado: `https://gr-u.onrender.com/${shortUrl}` });
     }
+    
     // Verifica se a URL já existe no banco, para n criar outra igual
     const urlExists = await Url.findOne({ originalUrl: url });
-    //se existir nao cria uma nova e devolve a que ja tem
+    // se existir nao cria uma nova e devolve a que ja tem
     if (urlExists) {
-      return res.render("index", {
-        linkGerado: `https://gr-u.onrender.com/${urlExists.shortId}`,
-        error: "Este link já foi encurtado",
-      }); // aqui a gente renderiza a view e passa o link curto pra ela mostrar pro user
+      return res.json({ linkGerado: `https://gr-u.onrender.com/${urlExists.shortId}` });
     }
+    
     // Gera o ID aleatorio pro encurtador
     shortUrl = shortid.generate();
     // Prepara o objeto com o model do db
@@ -88,26 +77,20 @@ const shortenController = async (req, res) => {
       shortId: shortUrl,
     });
     // Salva no banco e avisa se funcionou ou n
-    await newUrl.save(); // usamos o await pq é uma funcao assincrona, entao ele espera salvar pra depois mandar a resposta
-    res.render("index", {
-      linkGerado: `https://gr-u.onrender.com/${shortUrl}`,
-      error: null,
-    }); // aqui a gente renderiza a view e passa o link curto pra ela mostrar pro user
+    await newUrl.save(); // aqui usa o await pq é uma funcao assincrona, entao ele espera salvar pra depois mandar a resposta
+    return res.json({ linkGerado: `https://gr-u.onrender.com/${shortUrl}` }); // aqui retorna o link curto pro front via AJAX
+    
   } catch (err) {
     // se der erro, mostra no console e avisa o user
     console.error(err);
-    res.render("index", {
-      linkGerado: null,
-      error: "Ops, algo deu errado. Tente novamente.",
-    }); // exibe a view com a mensagem de erro
+    return res.status(500).json({ error: "Ops, algo deu errado. Tente novamente." }); // retorna o erro via JSON
   }
 };
 
 
 // FUNCAO PRA MOSTRAR O FORMULARIO
 const startController = (req, res) => {
-  res.render("index", {
-    /* aqui a gente renderiza a view e passa o link curto e o erro como null, pq nessa rota a gente so quer mostrar o form vazio, sem link ou erro*/
+  res.render("index", { // renderiza a página inicial com o formulario vazio
     linkGerado: null,
     error: null,
   });
@@ -116,7 +99,7 @@ const startController = (req, res) => {
 // FUNCAO PRA REDIRECIONAR E CONTAR CLIQUE
 const redirectController = async (req, res) => {
   const { shortId } = req.params; // Pega o shortId que veio na URL
-  const validation = redirectUrlSchema.safeParse({ shortId }); //usei sefaParse pra validar o shortId usando o esquema do Zod que criamos, pra garantir que ele só tenha caracteres permitidos
+  const validation = redirectUrlSchema.safeParse({ shortId }); //usei sefaParse pra validar o shortId usando o esquema do Zod, pra garantir que ele só tenha caracteres permitidos
   if (!validation.success) {
     return res.status(400).send("ID de URL inválida!");
   }
