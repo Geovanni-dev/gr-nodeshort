@@ -4,7 +4,8 @@ const urlRoutes = require("./routes/urlRoutes"); // Importa as rotas que criei p
 const mongoose = require("mongoose");// Importa o mongoose
 const express = require("express"); // Importa o express pra criar o servidor e lidar com as rotas
 
-const app = express();
+
+const app = express(); // Cria o servidor
 
 // Conecta ao MongoDB Atlas
 mongoose
@@ -14,6 +15,7 @@ mongoose
 
 // Middleware para o Express entender JSON que vem no body das reqs
 app.use(express.json());
+
 
 // Middleware para o Express entender dados de formulários
 app.use(express.urlencoded({ extended: true }));

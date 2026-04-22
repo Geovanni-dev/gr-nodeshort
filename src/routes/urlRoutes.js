@@ -1,12 +1,13 @@
 const express = require('express'); // Importa o express
 const router = express.Router(); // Cria um router do express
 const controller = require('../controllers/urlController'); // Importa o controller 
+const limiter  = require('../middleware/rateLimit'); // Importa o middleware de rate limit
 
 // ROTA PRA RENDERIZAR A PAGINA INICIAL COM O FORMULARIO
 router.get('/', controller.startController);
 
 // ROTA PRA CRIAR O LINK ENCURTADO  
-router.post('/shorten', controller.shortenController);
+router.post('/shorten',limiter, controller.shortenController);
 
 
 // ROTA PARA REDIRECIONAR E CONTAR CLIQUE 
