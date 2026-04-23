@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>GR-NodeShort - Encurtador de URL</title>
     <link rel="stylesheet" href="/style.css">
 </head>
@@ -277,9 +277,21 @@
                 });
 
                 const data = await response.json();
+                if (response.status === 429) {
+            errorView(data.message + ` (${data.retryAfter}s)`);
+            document.getElementById('resultContainer').innerHTML = '';
+
+            // bloqueia botão pelo tempo
+            setTimeout(() => {
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+            }, data.retryAfter * 1000);
+
+            return;
+        }
 
                 if (response.ok) {
-                    // Sucesso - mostra o link gerado
+                    // Sucesso mostra o link gerado
                     resultView(data.linkGerado);
                     // Limpa o erro se tiver
                     document.getElementById('errorContainer').innerHTML = '';
@@ -287,8 +299,7 @@
                     document.getElementById('url').value = '';
                     document.getElementById('customUrl').value = '';
                 } else {
-                    // Erro - mostra a mensagem
-                    errorView(data.error);
+                    errorView(data.message || data.error); 
                     // Limpa o resultado se tiver
                     document.getElementById('resultContainer').innerHTML = '';
                 }
@@ -296,10 +307,12 @@
                 console.error("Erro na requisição:", err);
                 errorView("Erro ao conectar com o servidor. Tente novamente.");
             } finally {
-                // Reabilita o botão
-                submitBtn.disabled = false;
-                submitBtn.style.opacity = '1';
-            }
+            
+            if (submitBtn.disabled) {
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = '1';
+    }
+}
         });
 
         /*================== atualiza o ano no footer*/
