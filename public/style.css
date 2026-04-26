@@ -321,7 +321,6 @@ input:-webkit-autofill {
 }
 
 .error-banner::before {
-    content: "✕";
     font-size: 1rem;
     font-weight: 900;
     color: #ef4444;

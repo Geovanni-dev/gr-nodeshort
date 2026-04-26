@@ -278,7 +278,7 @@
 
                 const data = await response.json();
                 if (response.status === 429) {
-            errorView(data.message + ` (${data.retryAfter}s)`);
+                errorView(data.error);
             document.getElementById('resultContainer').innerHTML = '';
 
             // bloqueia botão pelo tempo
