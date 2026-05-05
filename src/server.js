@@ -1,3 +1,7 @@
+const dns = require("dns"); // Importa o módulo dns do Node pra validar URLs
+dns.setServers(["8.8.8.8", "8.8.4.4"]); // Define os servidores DNS do Google 
+dns.setDefaultResultOrder("ipv4first"); // Configura o DNS pra priorizar IPv4, evitando erros de validação
+
 require("dotenv").config(); // Carrega as variáveis de ambiente do arquivo .env
 
 const urlRoutes = require("./routes/urlRoutes"); // Importa as rotas que criei pra encurtar URL, renderizar a pagina inicial e redirecionar
@@ -9,7 +13,7 @@ const app = express(); // Cria o servidor
 
 // Conecta ao MongoDB Atlas
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.DATABASE_URL)
   .then(() => console.log("Atlas conectou"))
   .catch((err) => console.error("erro ao conectar:", err));
 
