@@ -22,7 +22,7 @@ Interface web e API para encurtar links, redirecionar e monitorar acessos. Proje
 ## 🖥️ Demonstração
 
 <p align="center">
-  <img src="./public/images/GR-NODESHORT.png" width="300" alt="NodeShort Demo" />
+  <img src="./public/images/Capa-Nodeshort.png" width="1400" alt="NodeShort Demo" />
 </p>
 
 ---
