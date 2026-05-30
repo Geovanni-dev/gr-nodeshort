@@ -24,10 +24,12 @@ app.use(express.json());
 // Middleware para o Express entender dados de formulários
 app.use(express.urlencoded({ extended: true }));
 
+const path = require("path"); // Importa o path pra lidar com caminhos de arquivos
+
 // Configura o EJS como template engine para renderizar as views
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "../views")); // Define o caminho das views
 
-const path = require("path"); // Importa o path pra lidar com caminhos de arquivos
 
 // Isso faz o Node sair da pasta 'src' e encontrar a 'public' na raiz
 app.use(express.static(path.join(__dirname, "../public")));

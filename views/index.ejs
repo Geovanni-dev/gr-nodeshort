@@ -131,9 +131,9 @@
     </div>
 
     <script>
-        console.log("🚀 Script carregado com sucesso!");
+        console.log("Script carregado");
 
-        /*================== funcao pra colar do clipboard */
+        /*================== função pra colar do clipboard */
         window.handlePaste = async function () {
             try {
                 const text = await navigator.clipboard.readText();
@@ -147,7 +147,7 @@
                 }
             } catch (err) {
                 console.error("Erro ao colar:", err);
-                alert("Não foi possível acessar a área de transferência. Cole manualmente (Ctrl+V)");
+                alert("Não foi possível acessar a área de transferência. Cole manualmente");
             }
         };
 

@@ -9,6 +9,7 @@
   <img src="https://img.shields.io/badge/EJS-8B5A2B?style=for-the-badge&logo=ejs&logoColor=white"/>
   <img src="https://img.shields.io/badge/Zod-3E6B9E?style=for-the-badge&logo=zod&logoColor=white"/>
   <img src="https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white"/>
 </p>
 
 Interface web e API para encurtar links, redirecionar e monitorar acessos. Projeto Fullstack focado em simplicidade, design moderno e performance.
@@ -50,25 +51,27 @@ Interface web e API para encurtar links, redirecionar e monitorar acessos. Proje
 | **Banco de Dados** | `MongoDB + Mongoose` | Persistência de dados |
 | **Validação** | `Zod` | Validação de schemas e dados |
 | **Segurança** | `Express Rate Limit` | Proteção contra spam e abuso |
-| **Utilitários** | `shortid` | Geração de IDs únicos |
-| **Utilitários** | `valid-url` | Validação de links |
+| **Infra/Deploy**| `Docker + Docker Compose`| Containerização da aplicação |
 
 ---
 
 ## 🗂️ Arquitetura do Projeto
 
-```
-encurtador-url/
-├── public/              # Arquivos estáticos (CSS, Imagens)
-├── views/               # Templates da interface (EJS)
-├── models/
-│   └── Url.js           # Schema do banco de dados
-├── routes/
-│   └── urlRoutes.js     # Rotas do encurtador
-├── controllers/
-│   └── urlController.js # Lógica de negócio e validação Zod
-├── server.js            # Arquivo principal do servidor
-└── .env                 # Variáveis de ambiente
+```text
+NODEShort/
+├── public/
+├── views/
+│   └── index.ejs
+├── src/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   └── server.js
+├── .env.example
+├── Dockerfile
+├── docker-compose.yml
+└── package.json                
 ```
 
 ---
@@ -79,7 +82,7 @@ O sistema aceita um parâmetro opcional chamado `customUrl`:
 
 - **Sem URL personalizada** → o servidor gera um ID aleatório único (ex: `abc123`)
 - **Com URL personalizada** → valida se já existe no banco; se livre, o link assume esse nome
-- **Limpeza automática** → o backend remove espaços e o HTML valida o formato para garantir compatibilidade com qualquer navegador
+- **Limpeza automática** → o backend remove espaços e o HTML valida o formato para garantir compatibilidade.
 
 ---
 
@@ -98,20 +101,23 @@ O sistema aceita um parâmetro opcional chamado `customUrl`:
 
 ## 💻 Instalação e Uso
 
-```bash
-# Clone o repositório
-git clone https://github.com/seu-usuario/encurtador-url
+### Configuração Inicial
+Clone o repositório e configure as variáveis de ambiente:
 
-# Entre na pasta
+git clone [https://github.com/Geovanni-dev/gr-nodeshort](https://github.com/Geovanni-dev/gr-nodeshort)
+
 cd encurtador-url
 
-# Instale as dependências
+*Edite o arquivo `.env` e adicione sua `DATABASE_URL` do MongoDB.*
+
+### Opção 1: Rodando com Docker 🐳
+```bash
+docker compose up -d --build
+```
+
+### Opção 2: Rodando com Node.js localmente
+```bash
 npm install
-
-# Configure o .env com sua string de conexão do MongoDB
-MONGO_URI=mongodb://...
-
-# Rode o projeto
 npm start
 ```
 
@@ -123,7 +129,7 @@ O projeto está hospedado no **Render** (plataforma cloud gratuita).
 
 - ✅ Deploy gratuito e simples
 - ✅ Integração direta com GitHub
-- ✅ Suporte nativo a Node.js
+- ✅ Suporte nativo a Node.js e Docker
 - ✅ SSL automático (HTTPS)
 
 ---

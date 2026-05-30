@@ -29,7 +29,7 @@ const redirectUrlSchema = z.object({
 //==========================================Fuçoes dos controllers
 
 
-// FUNCAO PRA CRIAR O LINK ENCURTADO
+// FUNÇÃO PRA CRIAR O LINK ENCURTADO
 const shortenController = async (req, res) => {
   try {
     let { url, customUrl } = req.body; // Pega a URL e a URL personalizada (se tiver) que vieram do formulario
