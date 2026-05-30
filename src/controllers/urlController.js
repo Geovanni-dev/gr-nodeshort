@@ -32,6 +32,7 @@ const redirectUrlSchema = z.object({
 // FUNÇÃO PRA CRIAR O LINK ENCURTADO
 const shortenController = async (req, res) => {
   try {
+    const baseUrl = process.env.BASE_URL || 'https://ns.grdev.app.br';
     let { url, customUrl } = req.body; // Pega a URL e a URL personalizada (se tiver) que vieram do formulario
     if (customUrl) {
       customUrl = customUrl.replace(/\s+/g, ""); // Remove espaços em branco
@@ -59,14 +60,14 @@ const shortenController = async (req, res) => {
         shortId: shortUrl,
       });
       await newUrl.save();
-      return res.json({ linkGerado: `https://gr-s.onrender.com/${shortUrl}` });
+      return res.json({ linkGerado: `${baseUrl}/${shortUrl}` });
     }
     
     // Verifica se a URL já existe no banco, para n criar outra igual
     const urlExists = await Url.findOne({ originalUrl: url });
     // se existir nao cria uma nova e devolve a que ja tem
     if (urlExists) {
-      return res.json({ linkGerado: `https://gr-s.onrender.com/${urlExists.shortId}` });
+      return res.json({ linkGerado: `${baseUrl}/${urlExists.shortId}` });
     }
     
     // Gera o ID aleatorio pro encurtador
@@ -78,7 +79,7 @@ const shortenController = async (req, res) => {
     });
     // Salva no banco e avisa se funcionou ou n
     await newUrl.save(); // aqui usa o await pq é uma funcao assincrona, entao ele espera salvar pra depois mandar a resposta
-    return res.json({ linkGerado: `https://gr-s.onrender.com/${shortUrl}` }); // aqui retorna o link curto pro front via AJAX
+    return res.json({ linkGerado: `${baseUrl}/${shortUrl}` }); // aqui retorna o link curto pro front via AJAX
     
   } catch (err) {
     // se der erro, mostra no console e avisa o user
@@ -88,7 +89,7 @@ const shortenController = async (req, res) => {
 };
 
 
-// FUNCAO PRA MOSTRAR O FORMULARIO
+// FUNÇÃO PRA MOSTRAR O FORMULARIO
 const startController = (req, res) => {
   res.render("index", { // renderiza a página inicial com o formulario vazio
     linkGerado: null,
@@ -96,7 +97,7 @@ const startController = (req, res) => {
   });
 };
 
-// FUNCAO PRA REDIRECIONAR E CONTAR CLIQUE
+// FUNÇÃO PRA REDIRECIONAR E CONTAR CLIQUE
 const redirectController = async (req, res) => {
   const { shortId } = req.params; // Pega o shortId que veio na URL
   const validation = redirectUrlSchema.safeParse({ shortId }); //usei sefaParse pra validar o shortId usando o esquema do Zod, pra garantir que ele só tenha caracteres permitidos

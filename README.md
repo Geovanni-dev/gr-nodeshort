@@ -14,7 +14,7 @@
 
 Interface web e API para encurtar links, redirecionar e monitorar acessos. Projeto Fullstack focado em simplicidade, design moderno e performance.
 
-👉 **Acesse ao vivo:** [https://gr-s.onrender.com](https://gr-s.onrender.com)
+👉 **Acesse ao vivo:** [https://ns.grdev.app.br](https://ns.grdev.app.br)
 
 </div>
 
@@ -123,15 +123,12 @@ npm start
 
 ---
 
-## 🌐 Deploy no Render
+## 🌐 Deploy (VPS)
 
-O projeto está hospedado no **Render** (plataforma cloud gratuita).
+O projeto está hospedado em um **Servidor Virtual Privado (VPS)** Linux, utilizando containers para garantir o isolamento e a performance da aplicação.
 
-- ✅ Deploy gratuito e simples
-- ✅ Integração direta com GitHub
-- ✅ Suporte nativo a Node.js e Docker
-- ✅ SSL automático (HTTPS)
-
+* ✅ Infraestrutura conteinerizada com **Docker**
+* ✅ Domínio e subdomínio personalizados (`ns.grdev.app.br`)
 ---
 
 ## 📄 Licença
