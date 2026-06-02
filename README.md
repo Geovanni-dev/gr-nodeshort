@@ -8,8 +8,8 @@
   <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white"/>
   <img src="https://img.shields.io/badge/EJS-8B5A2B?style=for-the-badge&logo=ejs&logoColor=white"/>
   <img src="https://img.shields.io/badge/Zod-3E6B9E?style=for-the-badge&logo=zod&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=white"/>
   <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white"/>
+  <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white"/>
 </p>
 
 Interface web e API para encurtar links, redirecionar e monitorar acessos. Projeto Fullstack focado em simplicidade, design moderno e performance.
@@ -51,7 +51,8 @@ Interface web e API para encurtar links, redirecionar e monitorar acessos. Proje
 | **Banco de Dados** | `MongoDB + Mongoose` | Persistência de dados |
 | **Validação** | `Zod` | Validação de schemas e dados |
 | **Segurança** | `Express Rate Limit` | Proteção contra spam e abuso |
-| **Infra/Deploy**| `Docker + Docker Compose`| Containerização da aplicação |
+| **Infra/Deploy** | `Docker + Docker Compose` | Containerização da aplicação |
+| **CI/CD** | `GitHub Actions` | Pipeline de build e deploy automatizados |
 
 ---
 
@@ -59,6 +60,9 @@ Interface web e API para encurtar links, redirecionar e monitorar acessos. Proje
 
 ```text
 NODEShort/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml
 ├── public/
 ├── views/
 │   └── index.ejs
@@ -71,7 +75,7 @@ NODEShort/
 ├── .env.example
 ├── Dockerfile
 ├── docker-compose.yml
-└── package.json                
+└── package.json
 ```
 
 ---
@@ -99,16 +103,38 @@ O sistema aceita um parâmetro opcional chamado `customUrl`:
 
 ---
 
+## ⚙️ CI/CD com GitHub Actions
+
+O projeto utiliza **GitHub Actions** para automatizar o processo de build e deploy a cada push na branch `master`.
+
+### Fluxo do pipeline
+
+1. **Build e Push** — a imagem Docker é construída e enviada automaticamente para o Docker Hub
+2. **Deploy** — via SSH, o servidor puxa a nova imagem e recria o container na VPS
+
+### Secrets necessários no repositório
+
+| Secret | Descrição |
+|--------|-----------|
+| `DOCKERHUB_USERNAME` | Seu usuário no Docker Hub |
+| `DOCKERHUB_TOKEN` | Token de acesso do Docker Hub |
+| `SSH_HOST` | IP público da VPS |
+| `SSH_USER` | Usuário SSH da VPS |
+| `SSH_KEY` | Chave privada SSH completa |
+
+---
+
 ## 💻 Instalação e Uso
 
 ### Configuração Inicial
 Clone o repositório e configure as variáveis de ambiente:
 
-git clone [https://github.com/Geovanni-dev/gr-nodeshort](https://github.com/Geovanni-dev/gr-nodeshort)
-
+```bash
+git clone https://github.com/Geovanni-dev/gr-nodeshort
 cd encurtador-url
+```
 
-*Edite o arquivo `.env` e adicione sua `DATABASE_URL` do MongoDB.*
+*Edite o arquivo `.env.example` e adicione sua `DATABASE_URL` do MongoDB.*
 
 ### Opção 1: Rodando com Docker 🐳
 ```bash
@@ -125,10 +151,12 @@ npm start
 
 ## 🌐 Deploy (VPS)
 
-O projeto está hospedado em um **Servidor Virtual Privado (VPS)** Linux, utilizando containers para garantir o isolamento e a performance da aplicação.
+O projeto está hospedado em um **Servidor Virtual Privado (VPS)** Linux com deploy contínuo via **GitHub Actions**. A cada push na branch `master` a imagem é reconstruída, enviada ao Docker Hub e o container é atualizado automaticamente no servidor.
 
-* ✅ Infraestrutura conteinerizada com **Docker**
-* ✅ Domínio e subdomínio personalizados (`ns.grdev.app.br`)
+- ✅ Infraestrutura conteinerizada com **Docker**
+- ✅ Pipeline de CI/CD com **GitHub Actions**
+- ✅ Domínio e subdomínio personalizados (`ns.grdev.app.br`)
+
 ---
 
 ## 📄 Licença
