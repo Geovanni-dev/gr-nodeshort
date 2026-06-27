@@ -27,7 +27,6 @@ export default [
         'warn',
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
       ],
-      'no-console': 'warn',
       'no-debugger': 'error',
       eqeqeq: ['error', 'always'],
       curly: ['error', 'all'],

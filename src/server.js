@@ -4,6 +4,11 @@ dns.setDefaultResultOrder('ipv4first'); // Configura o DNS pra priorizar IPv4, e
 
 require('dotenv').config(); // Carrega as variáveis de ambiente do arquivo .env
 
+// desativa os logs em produção
+if (process.env.NODE_ENV === 'production') {
+  console.log = () => {};
+}
+
 const urlRoutes = require('./routes/urlRoutes'); // Importa as rotas que criei pra encurtar URL, renderizar a pagina inicial e redirecionar
 const mongoose = require('mongoose'); // Importa o mongoose
 const express = require('express'); // Importa o express pra criar o servidor e lidar com as rotas
