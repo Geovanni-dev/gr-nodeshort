@@ -14,6 +14,8 @@
   <img src="https://img.shields.io/badge/Zod-3E6B9E?style=for-the-badge&logo=zod&logoColor=white"/>
   <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white"/>
   <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white"/>
+  <img src="https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black"/>
 </p>
 
 A fullstack web interface and API for shortening links, redirecting users, and monitoring access. A fullstack project focused on simplicity, modern design, and performance.
@@ -43,6 +45,7 @@ A fullstack web interface and API for shortening links, redirecting users, and m
 | 🛡️ **Security** | URL validation and special character blocking via Regex |
 | 📋 **Quick Copy** | Copies the generated link to clipboard with visual feedback |
 | 🚦 **Rate Limiting** | Protection against spam and API abuse |
+| ✅ **Code Quality** | ESLint + Prettier + EditorConfig | Consistent formatting across the codebase |
 
 ---
 
@@ -79,7 +82,10 @@ NODEShort/
 ├── .env.example                  # Environment variable reference template
 ├── docker-compose.yml            # Multi-container orchestration config
 ├── Dockerfile                    # Production image build instructions
-└── package.json
+├── package.json
+├── .editorconfig                 # Editor formatting rules (indent, charset, EOL)
+├── .eslintrc.json                # ESLint rules and parser config
+└── .prettierrc                   # Prettier formatting preferences
 ```
 
 ---
