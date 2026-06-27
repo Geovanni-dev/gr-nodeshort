@@ -14,6 +14,8 @@
   <img src="https://img.shields.io/badge/Zod-3E6B9E?style=for-the-badge&logo=zod&logoColor=white"/>
   <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white"/>
   <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white"/>
+  <img src="https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black"/>
 </p>
 
 Interface web e API para encurtar links, redirecionar e monitorar acessos. Projeto Fullstack focado em simplicidade, design moderno e performance.
@@ -57,7 +59,7 @@ Interface web e API para encurtar links, redirecionar e monitorar acessos. Proje
 | **Segurança** | `Express Rate Limit` | Proteção contra spam e abuso |
 | **Infra** | `Docker + Docker Compose` | Containerização da aplicação |
 | **CI/CD** | `GitHub Actions` | Pipeline de build e deploy automatizados |
-
+| **Qualidade de código** | `ESLint + Prettier + EditorConfig` | Formatação consistente em toda a base de código |
 ---
 
 ## 🗂️ Estrutura do Projeto
@@ -77,6 +79,9 @@ NODEShort/
 │   ├── routes/                   # Declarações de rotas Express
 │   └── server.js                 # Ponto de entrada da aplicação
 ├── .env.example                  # Template de referência das variáveis de ambiente
+├── .editorconfig                 # Regras de formatação para editores (indent, charset, EOL)
+├── .eslintrc.json                # Regras e configuração do parser ESLint
+├── .prettierrc                   # Preferências de formatação do Prettier
 ├── docker-compose.yml            # Orquestração de múltiplos containers
 ├── Dockerfile                    # Instruções de build da imagem de produção
 └── package.json
