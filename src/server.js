@@ -1,44 +1,42 @@
-const dns = require("dns"); // Importa o módulo dns do Node pra validar URLs
-dns.setServers(["8.8.8.8", "8.8.4.4"]); // Define os servidores DNS do Google 
-dns.setDefaultResultOrder("ipv4first"); // Configura o DNS pra priorizar IPv4, evitando erros de validação
+const dns = require('dns'); // Importa o módulo dns do Node pra validar URLs
+dns.setServers(['8.8.8.8', '8.8.4.4']); // Define os servidores DNS do Google
+dns.setDefaultResultOrder('ipv4first'); // Configura o DNS pra priorizar IPv4, evitando erros de validação
 
-require("dotenv").config(); // Carrega as variáveis de ambiente do arquivo .env
+require('dotenv').config(); // Carrega as variáveis de ambiente do arquivo .env
 
-const urlRoutes = require("./routes/urlRoutes"); // Importa as rotas que criei pra encurtar URL, renderizar a pagina inicial e redirecionar
-const mongoose = require("mongoose");// Importa o mongoose
-const express = require("express"); // Importa o express pra criar o servidor e lidar com as rotas
-
+const urlRoutes = require('./routes/urlRoutes'); // Importa as rotas que criei pra encurtar URL, renderizar a pagina inicial e redirecionar
+const mongoose = require('mongoose'); // Importa o mongoose
+const express = require('express'); // Importa o express pra criar o servidor e lidar com as rotas
 
 const app = express(); // Cria o servidor
 
 // Conecta ao MongoDB Atlas
 mongoose
   .connect(process.env.DATABASE_URL)
-  .then(() => console.log("Atlas conectou"))
-  .catch((err) => console.error("erro ao conectar:", err));
+  .then(() => console.log('Atlas conectou'))
+  .catch((err) => console.error('erro ao conectar:', err));
 
 // Middleware para o Express entender JSON que vem no body das reqs
 app.use(express.json());
 
-
 // Middleware para o Express entender dados de formulários
 app.use(express.urlencoded({ extended: true }));
 
-const path = require("path"); // Importa o path pra lidar com caminhos de arquivos
+const path = require('path'); // Importa o path pra lidar com caminhos de arquivos
 
 // Configura o EJS como template engine para renderizar as views
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "../views")); // Define o caminho das views
-
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '../views')); // Define o caminho das views
 
 // Isso faz o Node sair da pasta 'src' e encontrar a 'public' na raiz
-app.use(express.static(path.join(__dirname, "../public")));
+app.use(express.static(path.join(__dirname, '../public')));
 
 // Injeta as rotas de encurtamento q criei no app
 app.use(urlRoutes);
 
 // Define a porta do ambiente (Heroku/Render) ou a 3000 pra dev local
 const port = process.env.PORT || 3000;
-app.listen(port, () => { // Inicia o servidor e mostra a mensagem no console
+app.listen(port, () => {
+  // Inicia o servidor e mostra a mensagem no console
   console.log(`Servidor rodando na porta ${port}`);
 });

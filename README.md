@@ -1,3 +1,7 @@
+<div align="right">
+  <a href="./README.pt.md">🇧🇷 Português</a>
+</div>
+
 <div align="center">
 
 # 🔗 GR-NodeShort
@@ -12,15 +16,15 @@
   <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white"/>
 </p>
 
-Interface web e API para encurtar links, redirecionar e monitorar acessos. Projeto Fullstack focado em simplicidade, design moderno e performance.
+A fullstack web interface and API for shortening links, redirecting users, and monitoring access. Built as a freelance project focused on simplicity, modern design, and performance.
 
-👉 **Acesse ao vivo:** [https://ns.grdev.app.br](https://ns.grdev.app.br)
+👉 **Live demo:** [https://ns.grdev.app.br](https://ns.grdev.app.br)
 
 </div>
 
 ---
 
-## 🖥️ Demonstração
+## 🖥️ Preview
 
 <p align="center">
   <img src="./public/images/Capa-Nodeshort.png" width="1400" alt="NodeShort Demo" />
@@ -28,120 +32,131 @@ Interface web e API para encurtar links, redirecionar e monitorar acessos. Proje
 
 ---
 
-## ⚡ Funcionalidades
+## ⚡ Features
 
-| Funcionalidade | Descrição |
-|----------------|-----------|
-| 🔗 **Encurtar URLs** | Gera códigos aleatórios ou permite URLs personalizadas |
-| ↪️ **Redirecionamento** | Encaminha o usuário para o link original instantaneamente |
-| 📊 **Contador de Cliques** | Monitora quantas vezes cada link foi acessado |
-| 🎨 **Interface Moderna** | UI responsiva com efeito Glassmorphism (EJS + CSS) |
-| 🛡️ **Segurança** | Validação de URLs e bloqueio de caracteres especiais via Regex |
-| 📋 **Quick Copy** | Copia o link gerado direto para a área de transferência com feedback visual |
-| 🚦 **Rate Limit** | Proteção contra spam e uso abusivo da API |
-
----
-
-## 🛠️ Tecnologias
-
-| Categoria | Tecnologia | Finalidade |
-|:----------|:-----------|:-----------|
-| **Backend** | `Node.js + Express` | Servidor e roteamento |
-| **Frontend** | `EJS` | View Engine / Templates |
-| **Banco de Dados** | `MongoDB + Mongoose` | Persistência de dados |
-| **Validação** | `Zod` | Validação de schemas e dados |
-| **Segurança** | `Express Rate Limit` | Proteção contra spam e abuso |
-| **Infra/Deploy** | `Docker + Docker Compose` | Containerização da aplicação |
-| **CI/CD** | `GitHub Actions` | Pipeline de build e deploy automatizados |
+| Feature | Description |
+|---|---|
+| 🔗 **URL Shortening** | Generates random codes or accepts custom slugs |
+| ↪️ **Redirection** | Instantly forwards users to the original link |
+| 📊 **Click Counter** | Tracks how many times each link has been accessed |
+| 🎨 **Modern UI** | Responsive interface with Glassmorphism effect (EJS + CSS) |
+| 🛡️ **Security** | URL validation and special character blocking via Regex |
+| 📋 **Quick Copy** | Copies the generated link to clipboard with visual feedback |
+| 🚦 **Rate Limiting** | Protection against spam and API abuse |
 
 ---
 
-## 🗂️ Arquitetura do Projeto
+## 🛠 Tech Stack
+
+| Layer | Technology | Purpose |
+|---|---|---|
+| **Backend** | `Node.js + Express` | Server and routing |
+| **Frontend** | `EJS` | View engine / templates |
+| **Database** | `MongoDB + Mongoose` | Data persistence |
+| **Validation** | `Zod` | Schema and input validation |
+| **Security** | `Express Rate Limit` | Spam and abuse protection |
+| **Infra** | `Docker + Docker Compose` | Application containerization |
+| **CI/CD** | `GitHub Actions` | Automated build and deploy pipeline |
+
+---
+
+## 🗂️ Project Structure
 
 ```text
 NODEShort/
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml
-├── public/
+│       └── deploy.yml            # GitHub Actions CI/CD pipeline
+├── public/                       # Static assets (CSS, images, JS)
 ├── views/
-│   └── index.ejs
+│   └── index.ejs                 # Main EJS template
 ├── src/
-│   ├── controllers/
-│   ├── middleware/
-│   ├── models/
-│   ├── routes/
-│   └── server.js
-├── .env.example
-├── Dockerfile
-├── docker-compose.yml
+│   ├── controllers/              # Route handler logic
+│   ├── middleware/               # Rate limiting and request guards
+│   ├── models/                   # Mongoose schema definitions
+│   ├── routes/                   # Express route declarations
+│   └── server.js                 # Application entry point
+├── .env.example                  # Environment variable reference template
+├── docker-compose.yml            # Multi-container orchestration config
+├── Dockerfile                    # Production image build instructions
 └── package.json
 ```
 
 ---
 
-## 🧠 Como Funciona — URL Personalizada
+## 🧠 How Custom URLs Work
 
-O sistema aceita um parâmetro opcional chamado `customUrl`:
+The system accepts an optional `customUrl` parameter:
 
-- **Sem URL personalizada** → o servidor gera um ID aleatório único (ex: `abc123`)
-- **Com URL personalizada** → valida se já existe no banco; se livre, o link assume esse nome
-- **Limpeza automática** → o backend remove espaços e o HTML valida o formato para garantir compatibilidade.
+- **Without custom URL** — the server generates a unique random ID (e.g. `abc123`)
+- **With custom URL** — checks availability in the database; if free, the link adopts that slug
+- **Auto-cleanup** — the backend strips whitespace and the HTML layer validates the format to ensure compatibility
 
 ---
 
-## 🗃️ Estrutura do Banco
+## 🗃️ Database Schema
 
 ```javascript
 {
-  originalUrl: String, // Link de destino (URL longa)
-  shortId: String,     // Código ou apelido personalizado
-  clicks: Number,      // Contador de acessos (padrão: 0)
-  createdAt: Date      // Data de criação automática
+  originalUrl: String, // Destination link (long URL)
+  shortId: String,     // Random code or custom slug
+  clicks: Number,      // Access counter (default: 0)
+  createdAt: Date      // Auto-generated creation timestamp
 }
 ```
 
 ---
 
-## ⚙️ CI/CD com GitHub Actions
+## ⚙️ CI/CD Pipeline
 
-O projeto utiliza **GitHub Actions** para automatizar o processo de build e deploy a cada push na branch `master`.
+The project uses **GitHub Actions** to automate build and deploy on every push to `master`.
 
-### Fluxo do pipeline
+```
+Push to master
+    │
+    ▼
+Build Docker image
+    │
+    ▼
+Push to Docker Hub
+    │
+    ▼
+SSH into VPS → pull new image → recreate container
+```
 
-1. **Build e Push** — a imagem Docker é construída e enviada automaticamente para o Docker Hub
-2. **Deploy** — via SSH, o servidor puxa a nova imagem e recria o container na VPS
+### Required repository secrets
 
-### Secrets necessários no repositório
+| Secret | Description |
+|---|---|
+| `DOCKERHUB_USERNAME` | Docker Hub username |
+| `DOCKERHUB_TOKEN` | Docker Hub access token |
+| `SSH_HOST` | VPS public IP |
+| `SSH_USER` | SSH user |
+| `SSH_KEY` | Full private SSH key |
 
-| Secret | Descrição |
-|--------|-----------|
-| `DOCKERHUB_USERNAME` | Seu usuário no Docker Hub |
-| `DOCKERHUB_TOKEN` | Token de acesso do Docker Hub |
-| `SSH_HOST` | IP público da VPS |
-| `SSH_USER` | Usuário SSH da VPS |
-| `SSH_KEY` | Chave privada SSH completa |
+Add them under **Settings → Secrets and variables → Actions**.
 
 ---
 
-## 💻 Instalação e Uso
+## 🚀 Running Locally
 
-### Configuração Inicial
-Clone o repositório e configure as variáveis de ambiente:
+### Initial setup
 
 ```bash
 git clone https://github.com/Geovanni-dev/gr-nodeshort
 cd encurtador-url
 ```
 
-*Edite o arquivo `.env.example` e adicione sua `DATABASE_URL` do MongoDB.*
+Edit `.env.example` and fill in your MongoDB `DATABASE_URL`.
 
-### Opção 1: Rodando com Docker 🐳
+### Option 1 — Docker 🐳
+
 ```bash
 docker compose up -d --build
 ```
 
-### Opção 2: Rodando com Node.js localmente
+### Option 2 — Node.js
+
 ```bash
 npm install
 npm start
@@ -149,16 +164,16 @@ npm start
 
 ---
 
-## 🌐 Deploy (VPS)
+## 🌐 Deployment
 
-O projeto está hospedado em um **Servidor Virtual Privado (VPS)** Linux com deploy contínuo via **GitHub Actions**. A cada push na branch `master` a imagem é reconstruída, enviada ao Docker Hub e o container é atualizado automaticamente no servidor.
+Hosted on a **Linux VPS** with fully automated deploys via **GitHub Actions**. Every push to `master` rebuilds the image, pushes it to Docker Hub, and updates the running container on the server with zero manual steps.
 
-- ✅ Infraestrutura conteinerizada com **Docker**
-- ✅ Pipeline de CI/CD com **GitHub Actions**
-- ✅ Domínio e subdomínio personalizados (`ns.grdev.app.br`)
+- ✅ Containerized infrastructure with **Docker**
+- ✅ CI/CD pipeline with **GitHub Actions**
+- ✅ Custom domain and subdomain (`ns.grdev.app.br`)
 
 ---
 
-## 📄 Licença
+## 📄 License
 
 **MIT © Geovani Rodrigues**

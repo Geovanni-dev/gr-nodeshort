@@ -1,5 +1,5 @@
 // importa o mongoose
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 // Cria o Schema do mongoose
 const Schema = mongoose.Schema;
@@ -30,7 +30,7 @@ const urlSchema = new Schema({
 });
 
 // Cria a collection baseada no Schema
-const Url = mongoose.model("Url", urlSchema);
+const Url = mongoose.model('Url', urlSchema);
 
 // Exporta pra usar nas rotas
 module.exports = Url;
