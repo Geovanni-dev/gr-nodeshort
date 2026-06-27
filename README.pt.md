@@ -16,7 +16,7 @@
   <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white"/>
 </p>
 
-Interface web e API fullstack para encurtar links, redirecionar e monitorar acessos. Desenvolvido como projeto freelance com foco em simplicidade, design moderno e performance.
+Interface web e API para encurtar links, redirecionar e monitorar acessos. Projeto Fullstack focado em simplicidade, design moderno e performance.
 
 👉 **Acesse ao vivo:** [https://ns.grdev.app.br](https://ns.grdev.app.br)
 
