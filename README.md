@@ -45,8 +45,6 @@ A fullstack web interface and API for shortening links, redirecting users, and m
 | 🛡️ **Security** | URL validation and special character blocking via Regex |
 | 📋 **Quick Copy** | Copies the generated link to clipboard with visual feedback |
 | 🚦 **Rate Limiting** | Protection against spam and API abuse |
-| ✅ **Code Quality** | ESLint + Prettier + EditorConfig | Consistent formatting across the codebase |
-
 ---
 
 ## 🛠 Tech Stack
@@ -60,7 +58,7 @@ A fullstack web interface and API for shortening links, redirecting users, and m
 | **Security** | `Express Rate Limit` | Spam and abuse protection |
 | **Infra** | `Docker + Docker Compose` | Application containerization |
 | **CI/CD** | `GitHub Actions` | Automated build and deploy pipeline |
-
+| **Code Quality** | `ESLint + Prettier + EditorConfig` | Consistent formatting across the codebase |
 ---
 
 ## 🗂️ Project Structure
@@ -80,12 +78,12 @@ NODEShort/
 │   ├── routes/                   # Express route declarations
 │   └── server.js                 # Application entry point
 ├── .env.example                  # Environment variable reference template
-├── docker-compose.yml            # Multi-container orchestration config
-├── Dockerfile                    # Production image build instructions
-├── package.json
 ├── .editorconfig                 # Editor formatting rules (indent, charset, EOL)
 ├── .eslintrc.json                # ESLint rules and parser config
-└── .prettierrc                   # Prettier formatting preferences
+├── .prettierrc                   # Prettier formatting preferences
+├── docker-compose.yml            # Multi-container orchestration config
+├── Dockerfile                    # Production image build instructions
+└── package.json
 ```
 
 ---
