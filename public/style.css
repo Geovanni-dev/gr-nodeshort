@@ -455,6 +455,7 @@ input:-webkit-autofill {
     }
 }
 
+
 /*================== feedback para mobile toque*/
 @media (max-width: 768px) {
   .input-field,
@@ -467,10 +468,10 @@ input:-webkit-autofill {
   textarea,
   select,
   .alias-input {
-    font-size: 16px !important; 
+    font-size: 16px !important;
   }
-  
- 
+
+
   .input-field::placeholder,
   .alias-input::placeholder {
     font-size: 14px;

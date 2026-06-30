@@ -8,6 +8,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"/>
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"/>
   <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white"/>
   <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white"/>
   <img src="https://img.shields.io/badge/EJS-8B5A2B?style=for-the-badge&logo=ejs&logoColor=white"/>
@@ -53,6 +54,7 @@ Interface web e API para encurtar links, redirecionar e monitorar acessos. Proje
 | Camada | Tecnologia | Finalidade |
 |---|---|---|
 | **Backend** | `Node.js + Express` | Servidor e roteamento |
+| **Linguagem** | `TypeScript` | Tipagem estática e segurança em tempo de compilação |
 | **Frontend** | `EJS` | View Engine / Templates |
 | **Banco de Dados** | `MongoDB + Mongoose` | Persistência de dados |
 | **Validação** | `Zod` | Validação de schemas e dados |
@@ -77,11 +79,13 @@ NODEShort/
 │   ├── middleware/               # Rate limiting e validações de requisição
 │   ├── models/                   # Definições de schema do Mongoose
 │   ├── routes/                   # Declarações de rotas Express
-│   └── server.js                 # Ponto de entrada da aplicação
+│   └── server.ts                 # Ponto de entrada da aplicação
+├── dist/                         # Saída compilada do TypeScript (gerado pelo build)
 ├── .env.example                  # Template de referência das variáveis de ambiente
 ├── .editorconfig                 # Regras de formatação para editores (indent, charset, EOL)
-├── .eslintrc.json                # Regras e configuração do parser ESLint
+├── eslint.config.js              # Regras e configuração do parser ESLint (com typescript-eslint)
 ├── .prettierrc                   # Preferências de formatação do Prettier
+├── tsconfig.json                 # Configuração do compilador TypeScript
 ├── docker-compose.yml            # Orquestração de múltiplos containers
 ├── Dockerfile                    # Instruções de build da imagem de produção
 └── package.json
@@ -95,20 +99,22 @@ O sistema aceita um parâmetro opcional chamado `customUrl`:
 
 - **Sem URL personalizada** → o servidor gera um ID aleatório único (ex: `abc123`)
 - **Com URL personalizada** → valida se já existe no banco; se livre, o link assume esse nome
-- **Limpeza automática** → o backend remove espaços e o HTML valida o formato para garantir compatibilidade
+- **Limpeza automática** → o backend remove espaços e o Zod valida o formato para garantir compatibilidade
 
 ---
 
 ## 🗃️ Estrutura do Banco
 
-```javascript
+```typescript
 {
-  originalUrl: String, // Link de destino (URL longa)
-  shortId: String,     // Código aleatório ou apelido personalizado
-  clicks: Number,      // Contador de acessos (padrão: 0)
+  originalUrl: string, // Link de destino (URL longa)
+  shortId: string,     // Código aleatório ou apelido personalizado
+  clicks: number,      // Contador de acessos (padrão: 0)
   createdAt: Date      // Data de criação automática
 }
 ```
+
+O schema é definido com Mongoose e o tipo TypeScript correspondente é inferido automaticamente via `InferSchemaType`, garantindo uma única fonte de verdade entre o schema do banco e a tipagem da aplicação.
 
 ---
 
@@ -120,7 +126,7 @@ O projeto utiliza **GitHub Actions** para automatizar build e deploy a cada push
 Push para master
     │
     ▼
-Build da imagem Docker
+Build TypeScript (tsc) + Build da imagem Docker
     │
     ▼
 Push para o Docker Hub
@@ -164,15 +170,23 @@ docker compose up -d --build
 
 ```bash
 npm install
+npm run build
 npm start
+```
+
+Para desenvolvimento com recarregamento automático:
+
+```bash
+npm run dev
 ```
 
 ---
 
 ## 🌐 Deploy
 
-Hospedado em um **VPS Linux** com deploys totalmente automatizados via **GitHub Actions**. A cada push na branch `master`, a imagem é reconstruída, enviada ao Docker Hub e o container é atualizado no servidor sem nenhuma intervenção manual.
+Hospedado em um **VPS Linux** com deploys totalmente automatizados via **GitHub Actions**. A cada push na branch `master`, o TypeScript é compilado, a imagem é reconstruída, enviada ao Docker Hub e o container é atualizado no servidor sem nenhuma intervenção manual.
 
+- ✅ Tipagem estática de ponta a ponta com **TypeScript**
 - ✅ Infraestrutura conteinerizada com **Docker**
 - ✅ Pipeline de CI/CD com **GitHub Actions**
 - ✅ Domínio e subdomínio personalizados (`ns.grdev.app.br`)

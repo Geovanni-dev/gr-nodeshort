@@ -1,7 +1,7 @@
-const express = require('express'); // Importa o express
+import express from 'express'; // Importa o express
 const router = express.Router(); // Cria um router do express
-const controller = require('../controllers/urlController'); // Importa o controller
-const limiter = require('../middleware/rateLimit'); // Importa o middleware de rate limit
+import controller from '../controllers/urlController.js'; // Importa o controller
+import limiter from '../middleware/rateLimit.js'; // Importa o middleware de rate limit
 
 // ROTA PRA RENDERIZAR A PAGINA INICIAL COM O FORMULARIO
 router.get('/', controller.startController);
@@ -13,4 +13,4 @@ router.post('/shorten', limiter, controller.shortenController);
 router.get('/:shortId', controller.redirectController);
 
 // Exporta pra usar nas rotas
-module.exports = router;
+export default router;

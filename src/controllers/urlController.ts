@@ -1,7 +1,9 @@
-const Url = require('../models/Url'); // Importa o model do banco
-const shortid = require('shortid'); // Importa a lib pra gerar ID aleatorio
-const validUrl = require('valid-url'); // Importa a lib pra validar URL
-const { z } = require('zod'); // Importa o Zod pra validar a URL personalizada
+import Url, { type UrlDocument } from '../models/Url.js'; // Importa o model do banco
+import shortid from 'shortid'; // Importa a lib pra gerar ID aleatorio
+import validUrl from 'valid-url'; // Importa a lib pra validar URL
+import { z } from 'zod'; // Importa o Zod pra validar a URL personalizada
+import type { Request, Response } from 'express';
+import type { QueryFilter } from 'mongoose';
 
 //===================================== Esquemas de validação usando Zod
 
@@ -30,18 +32,19 @@ const redirectUrlSchema = z.object({
 //==========================================Fuçoes dos controllers
 
 // FUNÇÃO PRA CRIAR O LINK ENCURTADO
-const shortenController = async (req, res) => {
+const shortenController = async (req: Request, res: Response) => {
   try {
     const baseUrl = process.env.BASE_URL || 'https://ns.grdev.app.br';
-    let { url, customUrl } = req.body; // Pega a URL e a URL personalizada (se tiver) que vieram do formulario
+    const url = req.body.url; // Pega a URL que vieram do formulario
+    let customUrl = req.body.customUrl; // Pega a URL personalizada que vieram do formulario
     if (customUrl) {
       customUrl = customUrl.replace(/\s+/g, ''); // Remove espaços em branco
     }
     const validation = shortenUrlSchema.safeParse({ customUrl });
     if (!validation.success) {
-      return res
-        .status(400)
-        .json({ error: validation.error.errors[0].message });
+      return res.status(400).json({
+        error: validation.error.issues[0]?.message ?? 'URL inválida!',
+      });
     }
     if (!validUrl.isUri(url)) {
       // Verifica se a URL é válida usando a lib valid-url
@@ -93,7 +96,7 @@ const shortenController = async (req, res) => {
 };
 
 // FUNÇÃO PRA MOSTRAR O FORMULARIO
-const startController = (req, res) => {
+const startController = (_req: Request, res: Response) => {
   res.render('index', {
     // renderiza a página inicial com o formulario vazio
     linkGerado: null,
@@ -102,15 +105,18 @@ const startController = (req, res) => {
 };
 
 // FUNÇÃO PRA REDIRECIONAR E CONTAR CLIQUE
-const redirectController = async (req, res) => {
+const redirectController = async (req: Request, res: Response) => {
   const { shortId } = req.params; // Pega o shortId que veio na URL
   const validation = redirectUrlSchema.safeParse({ shortId }); //usei sefaParse pra validar o shortId usando o esquema do Zod, pra garantir que ele só tenha caracteres permitidos
   if (!validation.success) {
     return res.status(400).send('ID de URL inválida!');
   }
+
+  const filter: QueryFilter<UrlDocument> = { shortId: validation.data.shortId }; // Cria o filtro com o shortId
+
   const foundUrl = await Url.findOneAndUpdate(
     // Acha o link, soma +1 no click e traz o dado atualizado
-    { shortId },
+    filter,
     { $inc: { clicks: 1 } },
     { new: true },
   );
@@ -124,8 +130,4 @@ const redirectController = async (req, res) => {
 };
 
 // Exporta pra usar nas rotas
-module.exports = {
-  shortenController,
-  startController,
-  redirectController,
-};
+export default { shortenController, startController, redirectController };

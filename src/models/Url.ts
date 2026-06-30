@@ -1,5 +1,6 @@
 // importa o mongoose
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+import type { InferSchemaType } from 'mongoose';
 
 // Cria o Schema do mongoose
 const Schema = mongoose.Schema;
@@ -29,8 +30,11 @@ const urlSchema = new Schema({
   },
 });
 
+// Tipagem do Schema
+export type UrlDocument = InferSchemaType<typeof urlSchema>;
+
 // Cria a collection baseada no Schema
-const Url = mongoose.model('Url', urlSchema);
+const Url = mongoose.model<UrlDocument>('Url', urlSchema);
 
 // Exporta pra usar nas rotas
-module.exports = Url;
+export default Url;

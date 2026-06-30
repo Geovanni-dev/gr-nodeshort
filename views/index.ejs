@@ -31,7 +31,7 @@
         <section class="hero-text">
             <h2 class="hero-title">Otimize seus endpoints</h2>
             <p class="hero-subtitle">
-               
+
         </section>
 
         <main class="main-card">
@@ -53,7 +53,7 @@
                                 </svg>
                             </span>
                             <input type="url" name="url" id="url" placeholder="Cole o link original aqui"
-                                class="input-field" required>
+                                class="input-field" required autocomplete="off">
                             <button type="button" onclick="handlePaste()" class="btn-paste" title="Colar link">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -72,7 +72,7 @@
                                     style="text-transform: lowercase;">ns.grdev.app.br/</span>...</label>
                             <div class="input-wrapper">
                                 <input type="text" name="customUrl" id="customUrl" placeholder="sua-url-personalizada"
-                                    class="input-field alias-input" oninput="this.value = this.value.toLowerCase()">
+                                    class="input-field alias-input" oninput="this.value = this.value.toLowerCase()" autocomplete="off">
                             </div>
                         </div>
                         <button type="submit" class="btn-shorten" id="submitBtn">
@@ -292,7 +292,7 @@
                     document.getElementById('url').value = '';
                     document.getElementById('customUrl').value = '';
                 } else {
-                    errorView(data.message || data.error); 
+                    errorView(data.message || data.error);
                     // Limpa o resultado se tiver
                     document.getElementById('resultContainer').innerHTML = '';
                 }
@@ -300,7 +300,7 @@
                 console.error("Erro na requisição:", err);
                 errorView("Erro ao conectar com o servidor. Tente novamente.");
             } finally {
-            
+
             if (submitBtn.disabled) {
             submitBtn.disabled = false;
             submitBtn.style.opacity = '1';

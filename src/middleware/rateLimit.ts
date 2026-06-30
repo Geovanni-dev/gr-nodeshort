@@ -1,6 +1,6 @@
-const rateLimit = require('express-rate-limit'); // Importa o express-rate-limit
+import rateLimit from 'express-rate-limit'; // Importa o express-rate-limit
 
-const blockedIps = {}; // Objeto para armazenar os IPs bloqueados
+const blockedIps: Record<string, number> = {}; // Objeto para armazenar os IPs bloqueados
 
 // Configura o rate limit para 5 reqs por minuto
 const limiter = rateLimit({
@@ -10,7 +10,7 @@ const limiter = rateLimit({
 
   handler: (req, res) => {
     // Funcao para lidar com o bloqueio
-    const ip = req.ip;
+    const ip = req.ip ?? 'undefined';
     const now = Date.now();
 
     // se o IP já esta registrado e o bloqueio ainda não acabou
@@ -30,4 +30,4 @@ const limiter = rateLimit({
   },
 });
 
-module.exports = limiter;
+export default limiter;
